@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen mt-20 bg-gray-200 w-full items-center flex flex-col">
-    <div class="bg-white container flex-1 my-12">
+    <div class="bg-white rounded-md shadow-lg container flex-1 my-12">
       <p class="pt-12 text-2xl md:text-5xl font-black">Our Mission</p>
       <section class="text-gray-700 body-font">
       <div class="container px-5 py-24 mx-auto">

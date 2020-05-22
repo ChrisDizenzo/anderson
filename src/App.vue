@@ -1,5 +1,11 @@
 <template>
   <div id="app" style="font-family: 'Noto Sans',sans-serif">
+    <div v-if="modal" class="absolute h-screen flex items-center justify-center w-full bg-gray-500 opacity-75" style="z-index:10000;">
+      <div class="lg:w-1/2 w-full bg-white flex flex-col items-center rounded-lg">
+
+
+      </div>
+    </div>
     <header v-if="$router.currentRoute.path== '/'" class="absolute top-0 z-10 w-full text-gray-700 body-font" >
       <div class="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
         <img src="./assets/group11.png" class="w-48 h-auto" alt="">
@@ -81,6 +87,7 @@ export default {
   data() {
     return {
       dropdown: false,
+      modal: false,
       navItems: [
         {
           name: 'Home',

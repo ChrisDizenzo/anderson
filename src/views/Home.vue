@@ -3,7 +3,7 @@
     
 
     <div class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
-      <div class="absolute top-0 w-full h-full bg-center bg-cover bg-image" :style="{'background-position-y': (scrollDist*-350)+'px'}">
+      <div class="absolute top-0 w-full h-full bg-center bg-cover bg-image" :style="{'background-position-y': (scrollDist*-350 - 50)+'px'}">
         <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
         <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
@@ -17,8 +17,10 @@
       <div class="container relative mx-auto">
         <div class="items-center flex flex-wrap">
           <div class="w-full lg:w-full px-4 ml-auto mr-auto text-center">
-            <h1 class="text-white mb-12 font-black text-2xl md:text-5xl uppercase" style="font-weight: 800"> The Official ENTREPRENEURSHIP CLUB of UCLA Anderson </h1>
-            </div>
+            <p class="mb-12 hidden md:block text-5xl text-white font-bold uppercase">The Official ENTREPRENEUR Association of <br> UCLA Anderson</p>
+            <p class="mb-12 text-2xl block md:hidden text-white font-bold uppercase">The Official ENTREPRENEUR Association of UCLA Anderson</p>
+
+          </div>
         </div>
       </div>
       
@@ -34,181 +36,345 @@
     </section>
     </div>
 
-    <div id="learnmore" class="w-full flex bg-gray-100 md:h-screen flex-col justify-center items-center">
     <section class="text-gray-700 body-font">
-      <div class="container px-5 mx-auto md:mx-0">
-        <div class="flex flex-col text-center w-full mb-20">
-          <h1 class="text-4xl font-medium title-font mb-4 text-gray-900 uppercase">What we do</h1>
-          <p class="lg:w-2/3 mx-auto text=gray-600 leading-relaxed">We're an ever-expanding group of like minded entrepreneurs. </p>
+      <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center items-center">
+          <img class="object-cover object-center rounded" alt="hero" src="../assets/EA_logo.png">
+        </div>
+        <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-bold text-gray-900">Better than ever before
+          </h1>
+          <p class="mb-8 leading-relaxed">With more than 600 members, the Entrepreneur Association (EA) is among the largest student organizations at UCLA Anderson. <br> <br> The EA fosters the entrepreneurial and venture community on campus through a wide range of initiatives. The organization works closely with the Harold and Pauline Price Center for Entrepreneurship & Innovation, which provides curriculum, mentoring relationships and educational programs that prepare MBA candidates for the challenges of management in entrepreneurial environments. <br> <br> The EA takes advantage of its vast resources to hold over 50 events each year, including hands-on workshops, intimate networking events with successful entrepreneurs and local startups, and a world-class business plan competition.</p>
+        </div>
+      </div>
+    </section>
+
+    
+
+  <div ref="img2" class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
+    <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2)*-50)+'px'}">
+      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
+      </span>
+      <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" class="absolute bottom-0 overflow-hidden">
+        <polygon points="2560 0 2560 100 0 100" class="text-white fill-current">
+          </polygon>
+        </svg> -->
+      </div>
+    
+    </div>
+
+    <div class="absolute sm:hidden block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2.7)*-350)+'px'}">
+      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
+      </span>
+      <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" class="absolute bottom-0 overflow-hidden">
+        <polygon points="2560 0 2560 100 0 100" class="text-white fill-current">
+          </polygon>
+        </svg> -->
+      </div>
+    
+    </div>
+    
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-full px-4 ml-auto mr-auto text-center">
+          <h1 class="text-white font-bold text-2xl sm:text-5xl uppercase"> Let's get this bread. <br> together </h1>
+          <button v-scroll-to="'#joinus'" class="flex-shrink-0 text-white border-0 py-2 px-8 bg-teal-500 focus:outline-none hover:bg-blue-700 rounded-lg text-lg mt-4 sm:mt-8" >Join Us</button>
+          
+          </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+
+  <section id="learnmore" class="text-gray-700 mb-12 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex items-center lg:w-full mx-auto border-b pb-16 mb-16 border-gray-200 sm:flex-row flex-col">
+          <div class="sm:w-32 sm:h-32 lg:w-1/2 h-20 w-20 inline-flex items-center justify-center rounded-full text-teal-500 flex-shrink-0">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-auto h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+
+          </div>
+          <div class="flex-grow lg:w-1/2 sm:text-left text-center mt-6 sm:mt-0">
+            <h2 class="text-gray-900 text-xl title-font font-bold mb-2">Get in the loop</h2>
+            <p class="leading-relaxed text-base"> We provide members with direct access to successful entrepreneurs, startups, venture capititalists, and potential partners in both the UCLA Anderson alumni community and the broader Los Angeles entrepreneurial ecosystem through regular dinners for eight, speaker series, ELabs workshops, and our flagship annual event, the crEAte conference.</p>
+            <a class="mt-3 text-teal-500 inline-flex items-center">View Upcoming Events
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center lg:w-full mx-auto border-b pb-16 mb-16 border-gray-200 sm:flex-row flex-col">
+          <div class="flex-grow lg:w-1/2 sm:text-left text-center mt-6 sm:mt-0">
+            <h2 class="text-gray-900 text-xl title-font font-bold mb-2">Expanded investment opportunities</h2>
+            <p class="leading-relaxed text-base">Members of the Entrepreneur Association are consistently successful when seeking investment during their time at Anderson through our strong connection to private investors in our alumni community. Together, EA and the Price Center facilitate formal opportunities for you to gain exposure to your growing businesses and you as a developing entrepreneur. <br> <br> Two primary examples are our annual Knapp Business Plan Competition and various fellowships provided through generous alumni and Anderson affiliates which provide essential early-stage capital for students. </p>
+          </div>
+          <div class="sm:w-32 sm:order-none lg:w-1/2 order-first sm:h-32 sm:h-auto h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full text-teal-500 flex-shrink-0">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-auto h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1559589689-577aabd1db4f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+
+          </div>
+        </div>
+        <div class="flex items-center lg:w-full mx-auto sm:flex-row flex-col">
+          <div class="sm:w-32 sm:h-32 lg:w-1/2 h-20 sm:h-auto w-20 inline-flex items-center justify-center rounded-full text-teal-500 flex-shrink-0">
+            <img alt="team" class="flex-shrink-0 rounded-lg w-auto h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+
+          </div>
+          <div class="flex-grow lg:w-1/2 sm:text-left text-center mt-6 sm:mt-0">
+            <h2 class="text-gray-900 text-xl title-font font-bold mb-2">Experience Not Required</h2>
+            <p class="leading-relaxed text-base">Even if you come to UCLA Anderson without a fully developed business idea, EA will coordinate workshops and mentorship programs so that you can take your idea from scratch to a completed business plan - not to mention the possibility of getting some funding to give you a real shot at starting your business. <br> <br> No matter what stage you are in your entrepreneurial career, EA will support you and will connect you to the right people and resoures to catalyze your business and entrepreneurial growth.</p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full flex bg-gray-100 pt-16 flex-col justify-center items-center">
+      <section class="text-gray-700 body-font">
+        <div class="container px-5 pt-24 pb-12 mx-auto md:mx-0">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h1 class="sm:text-4xl text-3xl font-bold title-font mb-4 text-gray-900">What we do</h1>
+            <p class="lg:w-2/3 mx-auto text=gray-600 leading-relaxed">We're an ever-expanding group of like minded entrepreneurs. </p>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg md:w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
+                <div class="w-full">
+                  <h2 class="title-font font-bold text-lg text-gray-900">Consulting</h2>
+                  <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                  <span class="inline-flex">
+                    <a class="text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1563807894768-f28bee0d37b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
+                <div class="w-full">
+                  <h2 class="title-font font-bold text-lg text-gray-900">Communication</h2>
+                  <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                  <span class="inline-flex">
+                    <a class="text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
+                <div class="w-full">
+                  <h2 class="title-font font-bold text-lg text-gray-900">Project-based</h2>
+                  <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                  <span class="inline-flex">
+                    <a class="text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                      </svg>
+                    </a>
+                    <a class="ml-2 text-gray-500">
+                      <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  
+    
+    <section class="text-gray-700 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+          <h1 class="sm:text-4xl text-3xl font-bold title-font mb-4 text-gray-900">Events</h1>
         </div>
         <div class="flex flex-wrap -m-4">
-          <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
-            <div class="h-full flex flex-col items-center text-center">
-              <img alt="team" class="flex-shrink-0 rounded-lg md:w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
-              <div class="w-full">
-                <h2 class="title-font font-bold text-lg text-gray-900">Consulting</h2>
-                <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
-                <span class="inline-flex">
-                  <a class="text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
+          <div class="p-4 md:w-1/3">
+            <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+              
+              <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=a0d3dedaec0263f6e21866e1e38db58e">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://uclaanderson.campusgroups.com/upload/uclaanderson/2020/r1_image_upload_996149_DoorDash1jpg_514122819.jpeg" alt="blog">
+              
+              </a>
+              
+              <div class="p-6">
+                <p class="leading-relaxed mb-1 text-sm">May 28 | 11:30am - 12:30pm</p>
+
+                <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=a0d3dedaec0263f6e21866e1e38db58e" class="hover:underline title-font text-xl font-bold text-teal-500 mb-3">Virtual DOJ w/ Max Nimaroff @ Doordash</a>
+                
               </div>
             </div>
           </div>
-          <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
-            <div class="h-full flex flex-col items-center text-center">
-              <img alt="team" class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1563807894768-f28bee0d37b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
-              <div class="w-full">
-                <h2 class="title-font font-bold text-lg text-gray-900">Communication</h2>
-                <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
-                <span class="inline-flex">
-                  <a class="text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
+          <div class="p-4 md:w-1/3">
+            <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+              <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=79997a59d521ebdea0c8ebcd6374a1f9">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://uclaanderson.campusgroups.com/upload/uclaanderson/2020/r1_image_upload_996343_Screen_Shot_20200515_at_10742_AM_51513571.png" alt="blog">
+              
+              </a>
+              
+              <div class="p-6">
+                <p class="leading-relaxed mb-1 text-sm">May 28 | 7:30pm - 9:30pm</p>
+
+                <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=79997a59d521ebdea0c8ebcd6374a1f9" class="hover:underline title-font text-xl font-bold text-teal-500 mb-3">[EA x AWC] - Wine Tasting Experience with Eliqs</a>
+                
               </div>
             </div>
           </div>
-          <div class="p-4 mx-auto md:mx-0 lg:w-1/3 md:w-1/2">
-            <div class="h-full flex flex-col items-center text-center">
-              <img alt="team" class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80">
-              <div class="w-full">
-                <h2 class="title-font font-bold text-lg text-gray-900">Project-based</h2>
-                <p class="text-gray-600 mt-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
-                <span class="inline-flex">
-                  <a class="text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a class="ml-2 text-gray-500">
-                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
+          <div class="p-4 md:w-1/3">
+            <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
+              <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=f176124975303f8e05321d5089b63de9">
+                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://uclaanderson.campusgroups.com/upload/uclaanderson/2020/r1_image_upload_1208018_Screenshot_20200519_203609_519233828.png" alt="blog">
+              
+              </a>
+              
+              <div class="p-6">
+                <p class="leading-relaxed mb-1 text-sm">Jun 16 | 6:30pm - 8:30pm</p>
+
+                <a onclick="window.open(this.href); return false;" href="https://uclaanderson.campusgroups.com/entrepreneur/rsvp?event_uid=f176124975303f8e05321d5089b63de9" class="hover:underline title-font text-xl font-bold text-teal-500 mb-3">[FEMBA] BCO Digital Mixer</a>
+                
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    </div>
+
+     
 
     
-    <div ref="img2" class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
-      <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2)*-350)+'px'}">
-        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
-        </span>
-        <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" class="absolute bottom-0 overflow-hidden">
-          <polygon points="2560 0 2560 100 0 100" class="text-white fill-current">
-            </polygon>
-          </svg> -->
-        </div>
-      
+    
+    <section class="text-gray-700 body-font relative">
+      <div class="absolute inset-0">
+        <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?q=110%20Westwood%20Plaza%20Los%20Angeles%2C%20CA%2C%2090095&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
+      <div class="container px-5 py-24 mx-auto flex">
+        <div class="lg:w-1/3 md:w-1/2 bg-white hover:shadow-xl shadow-lg rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
+          <h2 class="text-gray-800 text-xl mb-1 font-bold title-font">Contact Us</h2>
+          <p class="leading-relaxed mb-5 text-sm text-gray-600">If you're a student, VC, or faculty member. Fill out the form below and we will get back to you within 24 hours.</p>
+          <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" placeholder="Full Name" type="name">
+          <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" placeholder="Email" type="email">
+          <textarea class="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none" placeholder="Message"></textarea>
+          <button class="text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg">Send Message</button>
 
-      <div class="absolute sm:hidden block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2.7)*-350)+'px'}">
-        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
-        </span>
-        <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" class="absolute bottom-0 overflow-hidden">
-          <polygon points="2560 0 2560 100 0 100" class="text-white fill-current">
-            </polygon>
-          </svg> -->
         </div>
-      
       </div>
-      
-      <div class="container relative mx-auto">
-        <div class="items-center flex flex-wrap">
-          <div class="w-full lg:w-full px-4 ml-auto mr-auto text-center">
-            <h1 class="text-white font-black text-2xl sm:text-5xl uppercase" style="font-weight: 800"> Let's get this bread. <br> together </h1>
-            <button v-scroll-to="'#joinus'" class="flex-shrink-0 text-white border-0 py-2 px-8 bg-teal-500 focus:outline-none hover:bg-blue-700 rounded-lg text-lg mt-4 sm:mt-8" >Join Us</button>
-            
+    </section>
+
+    <section class="text-gray-700 body-font">
+      <div class="container px-5 py-12 mx-auto">
+        <div class="flex flex-wrap -m-4 text-center">
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path d="M8 17l4 4 4-4m-4-5v9"></path>
+                <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">54</h2>
+              <p class="leading-relaxed">Officers</p>
             </div>
+          </div>
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">444</h2>
+              <p class="leading-relaxed">Members</p>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+                <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">541</h2>
+              <p class="leading-relaxed">Emails/Newsletters</p>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <h2 class="title-font font-medium text-3xl text-gray-900">211</h2>
+              <p class="leading-relaxed">Events</p>
+            </div>
+          </div>
         </div>
       </div>
-      
-      
-      
-    </div>
+    </section>
 
-    <div id="joinus" class="py-32 w-full flex justify-center">
-      <div class="container z-10 mx-auto px-5 mx-auto flex flex-wrap items-center">
-          <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-            <h1 class="title-font font-medium text-3xl text-gray-900">Join our growing team of entrepreneurs</h1>
-            <p class="leading-relaxed text-gray-600 mt-4">Fill out this simple form and we will be sure to contact you within 24 hours about the process of joining our team.</p>
-          </div>
-          <div class="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0">
-            <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Join Us</h2>
-            <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4" placeholder="Full Name" type="text">
-            <input class="bg-white rounded border border-gray-400 focus:outline-none focus:border-teal-500 text-base px-4 py-2 mb-4" placeholder="Anderson ID" type="text">
-            <button class="text-white bg-teal-500 border-0 py-2 px-8 focus:outline-none hover:bg-teal-600 rounded text-lg">Submit</button>
-            <a class="text-xs text-gray-700 cursor-pointer hover:underline mt-3">Not a student at Anderson? Click Here</a>
-          </div>
-          
-        </div>
-    </div>
-    
     <footer class="text-gray-700 body-font">
   <div class="container px-5 mx-auto">
   </div>
-  <div class="bg-gray-200">
+  <div class="bg-teal-500">
     <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-      <img src="../assets/group11black.png" class="w-48 h-auto" alt="">
+      <img src="../assets/group11.png" class="w-48 h-auto" alt="">
 
-      <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">© 2020 UCLA Anderson College of Business Management
+      <p class="text-sm text-white sm:ml-6 sm:mt-0 mt-4">© 2020 UCLA Anderson College of Business Management
       </p>
       <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-        <a class="text-gray-500">
+        <a class="text-gray-200">
           <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
           </svg>
         </a>
-        <a class="ml-3 text-gray-500">
+        <a class="ml-3 text-gray-200">
           <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
             <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
           </svg>
         </a>
-        <a class="ml-3 text-gray-500">
+        <a class="ml-3 text-gray-200">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
             <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
           </svg>
         </a>
-        <a class="ml-3 text-gray-500">
+        <a class="ml-3 text-gray-200">
           <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
             <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
             <circle cx="4" cy="4" r="2" stroke="none"></circle>
@@ -217,6 +383,8 @@
       </span>
     </div>
   </div>
+
+  
 </footer>
 
   </div>
@@ -263,7 +431,7 @@ export default {
 }
 
 .bg-image {
-  background-image: url("../assets/LA.jpeg");
+  background-image: url("../assets/ucla_anderson.jpg");
   right: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
