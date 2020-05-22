@@ -34,11 +34,11 @@
     </section>
     </div>
 
-    <div id="learnmore" class="w-full flex bg-gray-100  flex-col items-center">
+    <div id="learnmore" class="w-full flex bg-gray-100 md:h-screen flex-col justify-center items-center">
     <section class="text-gray-700 body-font">
-      <div class="container px-5 py-12 sm:py-24 mx-auto md:mx-0">
-        <div class="flex flex-col text-center w-full mb-12">
-          <h1 class="text-3xl font-medium title-font mb-4 text-gray-900 uppercase">What we do</h1>
+      <div class="container px-5 mx-auto md:mx-0">
+        <div class="flex flex-col text-center w-full mb-20">
+          <h1 class="text-4xl font-medium title-font mb-4 text-gray-900 uppercase">What we do</h1>
           <p class="lg:w-2/3 mx-auto text=gray-600 leading-relaxed">We're an ever-expanding group of like minded entrepreneurs. </p>
         </div>
         <div class="flex flex-wrap -m-4">
@@ -127,7 +127,7 @@
 
     
     <div ref="img2" class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
-      <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-1.5)*-350)+'px'}">
+      <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2)*-350)+'px'}">
         <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
         <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style="height: 70px; transform: translateZ(0px);">

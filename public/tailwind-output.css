@@ -6317,6 +6317,10 @@ video {
   height: 100vh;
 }
 
+.h-screenhalf {
+  height: 50vh;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
@@ -25135,6 +25139,10 @@ video {
 
   .sm\:h-screen {
     height: 100vh;
+  }
+
+  .sm\:h-screenhalf {
+    height: 50vh;
   }
 
   .sm\:text-xs {
@@ -43958,6 +43966,10 @@ video {
     height: 100vh;
   }
 
+  .md\:h-screenhalf {
+    height: 50vh;
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
   }
@@ -62779,6 +62791,10 @@ video {
     height: 100vh;
   }
 
+  .lg\:h-screenhalf {
+    height: 50vh;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
   }
@@ -81598,6 +81614,10 @@ video {
 
   .xl\:h-screen {
     height: 100vh;
+  }
+
+  .xl\:h-screenhalf {
+    height: 50vh;
   }
 
   .xl\:text-xs {
