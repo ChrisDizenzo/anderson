@@ -6,7 +6,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { formatDistance, subDays } from 'date-fns'
-
+var VueScrollTo = require('vue-scrollto');
+ 
+Vue.use(VueScrollTo)
 Vue.component(formatDistance)
 Vue.component(subDays)
 
