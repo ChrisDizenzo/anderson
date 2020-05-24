@@ -1,14 +1,34 @@
 <template>
   <div id="app" style="font-family: 'Noto Sans',sans-serif">
-    <div v-if="modal" class="absolute h-screen flex items-center justify-center w-full bg-gray-500 opacity-75" style="z-index:10000;">
-      <div class="lg:w-1/2 w-full bg-white flex flex-col items-center rounded-lg">
-
+    <div v-if="getUpdating.updatingDocument != ''" class="fixed h-screen flex items-center justify-center w-full" style="z-index:10000;">
+      <div @click="cancelUpdating" class="absolute w-full h-full bg-gray-500 opacity-75 z-0">
 
       </div>
+      <section @keydown.esc="cancelUpdating"  class="text-gray-700 mb-20 bg-white rounded-md body-font relative">
+        <div class="container px-32 py-12 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Edit Text</h1>
+            <p class="mx-auto mb-1 leading-relaxed text-base">You are now editing the text as an administrator</p>
+            <p class="leading-relaxed text-red-500 text-base">Your changes are PERMANENT.</p>
+          </div>
+          <div class="lg:w-full md:w-2/3 mx-auto">
+            <div class="flex flex-wrap -m-2">
+              <div class="p-2 w-full">
+                <textarea @input="updateValue($event.target.value)" :value="getUpdatingValue" class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Message"></textarea>
+              </div>
+              <div class="p-2 flex justify-end w-full">
+                <button @click="pushToFirebase" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Confirm</button>
+                <button @click="cancelUpdating" class="flex mx-auto text-gray-700 hover:text-black border border-gray-400 hover:border-gray-600 bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
     <header v-if="$router.currentRoute.path== '/'" class="absolute top-0 z-10 w-full text-gray-700 body-font" >
       <div class="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
-        <img src="./assets/group11.png" class="w-48 h-auto" alt="">
+        <img src="./assets/group11.png" class="w-32 md:w-64 h-auto" alt="">
 
         <div class="md:ml-auto hidden md:flex mt-2 items-end h-full justify-center">
           <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
@@ -82,7 +102,34 @@
 <script>
 
 export default {
-  components: {
+  methods: {
+    cancelUpdating() {
+      this.$store.commit('cancelUpdating')
+    },
+    updateValue(val) {
+      this.$store.commit('setUpdatingValue', val)
+    }, 
+    pushToFirebase() {
+      this.$store.commit('pushToFirebase')
+      this.$store.commit('pullFirebase')
+    },
+  },
+  computed: {
+    updatingVariable () {
+      return this.$store.getters.getUpdating
+    },
+    isSending() {
+      return this.$store.getters.getIsSending
+    },
+    getUpdating () {
+      return this.$store.getters.getUpdating
+    },
+    getUpdatingValue () {
+      return this.$store.getters.getUpdatingValue
+    },
+  },
+  mounted () {
+    this.$store.commit('pullFirebase')
   },
   data() {
     return {
