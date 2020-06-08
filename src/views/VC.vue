@@ -3,7 +3,7 @@
         <section class="text-gray-700 body-font">
             <div class="container px-5 py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-500">Startups</p>
+                    <p class="text-2xl md:text-5xl font-light text-blue-500">Venture Capital</p>
                     <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
                     <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     

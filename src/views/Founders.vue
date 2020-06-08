@@ -1,0 +1,170 @@
+<template>
+    <div class="h-screen mt-16 bg-white w-full items-center flex flex-col">
+        <section class="text-gray-700 body-font">
+            <div class="container px-5 py-12 flex flex-col items-center mx-auto">
+                <div class="flex flex-col text-center w-full mb-12">
+                    <p class="text-2xl md:text-5xl font-light text-blue-500">Founders</p>
+                    <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
+                    <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
+                
+                </div>
+                <div class="flex flex-wrap w-full -m-4">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in companies" :key="ind" v-scroll-to="{ el: '#' + company.name.split(' ').join('') }">
+                        <a class="block relative h-32 rounded overflow-hidden">
+                        <div class="flex justify-center items-center w-full h-full relative">
+                            <img v-if="company.site" alt="ecommerce" class="object-cover mx-auto object-center block" style="height: 75px; width: 75px;" :src="'//logo.clearbit.com/'+company.site">
+                            <img v-else alt="ecommerce" class="object-cover mx-auto object-center block h-auto" style="height: 75px;" :src="company.url">
+                            <div class="hover:opacity-0 cursor-pointer absolute top-0 left-0 bg-white h-full w-full opacity-25"></div>
+                            
+                            
+                        </div>
+                        </a>
+                        <div class="mt-4">
+                        </div>
+                    </div>
+                </div>
+
+                <section v-for="(company,ind) in companies" :id="company.name.split(' ').join('')" :key="ind" class="text-gray-700 body-font">
+                    <div class="container mx-auto flex px-5 py-16 border-b border-t border-gray-200 md:flex-row flex-col items-center">
+                        <div class="md:w-1/4 w-5/6 mb-10 md:mb-0">
+                            <img class="object-cover object-center rounded mx-auto" alt="hero" :src="company.url">
+                        </div>
+                        <div class="md:flex-1 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{company.name}}
+                        </h1>
+                        <p class="mb-4 leading-relaxed"><span class="font-bold text-gray-700">Description: </span> {{company.desc}}</p>
+                        <p class="mb-4"> <span class="font-bold text-gray-700">Team: </span> {{company.team}}</p>
+                        <p v-if="company.looking != ''" class="mt-6 mb-2"> <span class="font-bold p-1 rounded bg-blue-700 text-white">Looking for:</span>  {{company.looking}}</p>
+                        <div class="flex mt-12 justify-center">
+                            <button class="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">Learn More</button>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- <section class="text-gray-700 body-font">
+                    <div class="container px-5 py-24 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+                        <div v-for="(company,ind) in companies" :key="ind" class="p-4 lg:w-1/2">
+                            <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <div class="flex justify-center items-center w-1/4 h-full relative">
+                                    <img alt="ecommerce" class="object-cover object-center block h-auto" style="width: 100%" :src="company.url">
+                                    
+                                </div>
+                                <div class="flex-1 sm:pl-8">
+                                    <h2 class="title-font mb-2 font-bold text-lg text-gray-900">{{company.name}}</h2>
+                                    <p class="mb-2"> <span class="font-bold text-gray-700">Description: </span> {{company.desc}}</p>
+                                    <p class="mb-2"> <span class="font-bold text-gray-700">Team: </span> {{company.team}}</p>
+                                    <p v-if="company.looking != ''" class="mb-2"> <span class="font-bold p-1 rounded bg-blue-700 text-white">Looking for:</span> {{company.looking}}</p>
+                                    <span class="inline-flex">
+                                    <a class="text-gray-500">
+                                        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="ml-2 text-gray-500">
+                                        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a class="ml-2 text-gray-500">
+                                        <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                                        </svg>
+                                    </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </section> -->
+            </div>
+            </section>
+            
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            companies: [
+                {
+                    url: "https://i.imgur.com/QeYfrxi.png",
+                    name: 'Sahara',
+                    desc: 'Sahara is a SaaS platform that enables users to build physical products without downloading any software or purchasing any electronics, letting them prototype quickly and cheaply from anywhere. Our platform accomplishes this by allowing developers to connect to circuit boards, chips, and test equipment we host in the cloud.',
+                    team: "Andy Chang, UCLA Anderson 2021 Josh Kimmel, UCLA Anderson 2021 Annie Lu, UCLA Anderson 2021 Jama Mohamed, UCLA Anderson 2021 Elaine Park, UCLA Law 2021",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/91/a8/3c/d0/4cbeafbed81f29bb61d0a391_262x130.jpg",
+                    name: 'RealAppeal',
+                    desc: 'For property owners who want to reduce their property taxes, realAppeal uses localized data and machine learning to file property tax appeals on your behalf, reducing your liability and in turn saving you money.',
+                    team: "Colton Pace (EMBA '21), Frank DiZenzo (EMBA '21), Maura Liebendorfer (EMBA '21)",
+                    looking: "Lawyer (real estate specialist)",
+                },
+                {
+                    url: "https://i.imgur.com/UosxPAK.png",
+                    name: 'Oya Apparel',
+                    desc: 'OYA Apparel is the first company to design health-inspired, direct-to-consumer leggings for a woman’s fit and lifestyle needs. Our pro-woman brand will normalize conversations around women’s health while increasing a woman’s confidence about her needs.',
+                    team: "Patrick Ayers, UCLA Anderson 2021 Mitchella Gilbert, UCLA Anderson 2021 Mac Seder, UCLA Anderson 2021 Ashley Sykora, UCLA Law 2021 Raylan Vaz, UCLA Anderson 2021",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/2e/78/0f/d1/b9ec9b394d9ce5584aadb3fb_214x214.jpg",
+                    name: 'Socialite',
+                    desc: 'Socialite is an on-demand staffing platform for events and experiential marketing agencies, that uses matchmaking technology to fill shifts in real-time with promotional models, bartenders, servers and photographers. ',
+                    team: "Ania Puczylowska (EMBA '20), Matthew Cole (EMBA '20), Stephen A. Johnson (FEMBA '21), Naomi Chi (FEMBA '21)",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/bb/fc/c5/20/8d98948bb19bf1b41c59e8fe_238x130.jpg",
+                    name: 'Gleam',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/6a/d8/c5/6f/5e3daabd2875280bcbbb45e5_238x76.jpg",
+                    name: 'Outpace Cancer',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/74/01/64/5c/f29563d13e806f8eba4a5f31_166x166.jpg",
+                    name: 'PDR Chemical',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/e1/09/47/bb/51b9bcaa7b3a221f1f654df9_226x120.jpg",
+                    name: 'Protean',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/4f/47/33/1e/85e04bb81b840a3d319c109b_250x88.jpg",
+                    name: 'Rest.',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+                {
+                    url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/93/db/e9/d5/0d760de193c6b1630a4fc61e_238x132.jpg",
+                    name: 'Wine Vision',
+                    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+                    team: "",
+                    looking: "",
+                },
+            ],
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>

@@ -66,18 +66,193 @@ let home1;
 
 export default new Vuex.Store({
   state: {
+
     db: fb,
     eventName: '',
     home: home1,
     updatingDocument: '',
     updatingVariable: '',
     updatingValue: '',
-    isAdmin: false,
+    isAdmin: true,
     isSending: false,
+    leadership: 
+    [
+      {
+        name: "Julia Egan",
+        title: "President",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996082_Egan_Julia012jpg_10416498.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Jama Mohamed",
+        title: "Founders",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996215_20171009171638_IMG_002503jpeg_101420297.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Christopher Abad",
+        title: "Admissions",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_706365_30955549328_a22ea79b58_ojpg_52422342.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Addy Quirk",
+        title: "Startup Recruiting",
+        img: "https://static1.campusgroups.com/images/ico/male_user_large.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Angela Klein",
+        title: "Officer",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2017/s3_image_upload_536553_12747956_10154332916261754_8030394093390064216_o_92218246_crop.jpg",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Holly Han",
+        title: "Officer",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_536558_profilejpg_49232647.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Janet Chung",
+        title: "Officer",
+        img: "https://static1.campusgroups.com/images/ico/female_user_large.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Jackson Foster",
+        title: "D48s",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2020/s3_image_upload_996093_Foster_Jackson005jpg_11012028.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Maura Liebendorfer",
+        title: "Alumni Relations",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996185_Liebendorfer_Maura007jpg_92920228.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Mitzi Benavides",
+        title: "Competitions",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_996236_upload_10416535_10416535.jpg",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "PRATYUSH KANKANWADI",
+        title: "Competitions",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2018/s3_image_upload_678289_99d4cc7daba54d84b6f6780b25c0aecb_1016152119.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Alec Steinfeld",
+        title: "MBA Program Relations",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_1208018_WhatsApp_Image_20190924_at_121026jpeg_1111123220.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Frank DiZenzo",
+        title: "Business Formation",
+        img: "https://static1.campusgroups.com/images/ico/male_user_large.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Alan Spindel",
+        title: "Speaker Series",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_996285_upload_93013522_93013522.jpg",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Mai Bui",
+        title: "Innovation",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996024_Bui_Mai0091jpg_111513348.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Andy Chang",
+        title: "Technology",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2020/s3_image_upload_996034_Chang_11716320.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Daniel Beckerman",
+        title: "Marketing",
+        img: "https://static1.campusgroups.com/images/ico/male_user_large.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Lucy Zhou",
+        title: "External Relations",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996343_Zhou_Lucy008jpg_1021211320.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Luke Katz",
+        title: "DOJs",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_upload_996149_Anderson_Headshotjpg_10915148.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Lindsay Miller",
+        title: "Venture Capital",
+        img: "https://static1.campusgroups.com/upload/uclaanderson/2019/s3_image_996213_upload_102415511_102415511.jpg",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      },
+      {
+        name: "Arun Gajendran Karunmurthi",
+        title: "Finance",
+        img: "https://static1.campusgroups.com/images/ico/male_user_large.png",
+        quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
+        email: '',
+        linkedin: '',
+      }
+    ]
   },
   getters: {
     getHome(state) {
       return state.home
+    },
+    getLeadership(state) {
+      return state.leadership
     },
     getIsSending(state) {
       return state.isSending
@@ -100,12 +275,15 @@ export default new Vuex.Store({
     setUpdatingValue(state, val) {
       state.updatingValue = val
     },
+    updateLeadership(state) {
+      state.updatingDocument = 'Leadership'
+      state.updatingVariable = 'Leadership'
+    },
     flipAdmin (state) {
       state.isAdmin = !state.isAdmin
     },
     updateSelected (state, val) {
       state.selected = val
-      window.console.log(state.selected)
     },
     cancelUpdating(state) {
       state.updatingDocument = ''
@@ -118,20 +296,19 @@ export default new Vuex.Store({
       var temp = {}
       temp[state.updatingVariable] = state.updatingValue
       console.log(temp)
-      state.db.collection("Pages").doc("home").set(temp,{merge:true})
-      .then(function() {
-          state.isSending = false
-          console.log("Document successfully written!", state.isSending);
-      })
-      .catch(function(error) {
-          console.error("Error writing document: ", error);
-      });
+      // state.db.collection("Pages").doc("home").set(temp,{merge:true})
+      // .then(function() {
+      //     state.isSending = false
+      //     console.log("Document successfully written!", state.isSending);
+      // })
+      // .catch(function(error) {
+      //     console.error("Error writing document: ", error);
+      // });
       state.updatingDocument = ''
       state.updatingVariable = ''
       state.updatingValue = ''
     },
     updateVariable(state, {documentName, variable, value}) {
-      window.console.log('working on the vuexstore')
 
       state.updatingDocument = documentName
       state.updatingVariable = variable
