@@ -7,9 +7,10 @@
         <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
       </div>
-      <div class="absolute sm:hidden block top-0 w-full h-full bg-center bg-cover bg-image">
-        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
+      <div class="absolute sm:hidden block top-0 w-full h-full overflow-x-hidden bg-center bg-cover bg-image">
+        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-blue-500">
         </span>
+        <img src="../assets/ucla_anderson.jpg" class="h-full w-auto " alt="">
       </div>
       
       <div class="container relative mx-auto">
@@ -375,6 +376,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 
 export default {
   name: 'Home',
@@ -439,8 +441,31 @@ export default {
       if(this.isAdmin) this.$store.commit('updateVariable', { documentName: 'Home', variable: val, value: this.home[val]})
     },
     flipAdmin () {
-      this.$store.commit('flipAdmin')
+      var provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        // The signed-in user info.
+        // var user = result.user;
+        console.log(result.user)
+        // ...
+        this.$store.commit('flipAdmin')
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        console.log(errorCode)
+        var errorMessage = error.message;
+        console.log(errorMessage)
+        // The email of the user's account used.
+        // var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        // var credential = error.credential;
+        // ...
+      });
     },
+    
   },
   computed: {
     isAdmin() {
@@ -453,7 +478,7 @@ export default {
   mounted() {
     window.scrollTo(0,0)
     window.addEventListener("scroll", this.onScroll)
-    this.img2Height = this.$refs.img2.offsetTop
+    // this.img2Height = this.$refs.img2.offsetTop
 
   },
 }

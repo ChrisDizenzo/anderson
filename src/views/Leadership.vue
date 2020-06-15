@@ -1,9 +1,9 @@
 <template>
     <div class="h-screen mt-16 bg-white w-full items-center flex flex-col">
-        <section class="text-gray-700 body-font">
-            <div class="container px-5 py-12 flex flex-col items-center mx-auto">
+        <section class="text-gray-700 body-font w-5/6 bg-white">
+            <div class=" px-5 py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-500" >Leadership</p>
+                    <p class="text-2xl md:text-5xl font-light text-blue-600" >Leadership</p>
                     <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula </p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                     <div class="ml-auto " v-if="isAdmin">
@@ -32,9 +32,9 @@
                         </div>
                         </a>
                         <div class="mt-4">
-                            <p class="text-center text-base font-bold leading-relaxed text-base">{{leader.name}} </p>
+                            <p class="text-center text-base font-bold text-gray-900 leading-relaxed text-base">{{leader.name}} </p>
 
-                            <p class="text-center text-gray-600 leading-relaxed text-md">{{leader.title}} </p>
+                            <p class="text-center font-normal text-sm text-gray-600 leading-relaxed uppercase">{{leader.title}} </p>
                             
                             <div class="flex mt-2 w-full ">
                                 <div class="w-6 h-6 relative ml-auto">

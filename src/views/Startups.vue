@@ -1,9 +1,9 @@
 <template>
     <div class="h-screen mt-16 bg-white w-full items-center flex flex-col">
-        <section class="text-gray-700 body-font">
-            <div class="container px-5 py-12 flex flex-col items-center mx-auto">
+        <section class="text-gray-700 body-font w-3/4">
+            <div class="w-full px-5 py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-500">Startups</p>
+                    <p class="text-2xl md:text-5xl font-light text-blue-600">Startups</p>
                     <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
                     <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
@@ -69,10 +69,10 @@
                 
                 <div class="container relative mx-auto h-full">
                 <div class="items-center flex flex-col h-full justify-center">
-                    <div class="w-1/2 rounded-md px-5 bg-white py-4  mx-auto">
+                    <div class="w-full h-full md:h-auto md:w-1/2 md:rounded-md px-5 bg-white py-4  mx-auto">
                     <div class="flex flex-col text-center w-full mb-12">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
+                    <p class="w-full lg:w-2/3 leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
                     
                     
                     </div>

@@ -3,7 +3,7 @@
         <section class="text-gray-700 body-font">
             <div class="container px-5 py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-500">Founders</p>
+                    <p class="text-2xl md:text-5xl font-light text-blue-600">Founders</p>
                     <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 

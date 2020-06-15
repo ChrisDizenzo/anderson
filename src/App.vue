@@ -1,5 +1,28 @@
 <template>
   <div id="app" style="font-family: 'Noto Sans',sans-serif">
+    <div :class="showNavMenu ? ['nav-menu-2'] : ['nav-menu']" class="fixed bg-gray-200 z-50 top-0 shadow-lg w-full flex flex-col ml-auto items-center h-screen" :style="{right: showNavMenu ? '0px' : '-100%'}">
+      <div  class="flex w-full px-4 mt-4 justify-end items-center">
+        <img src="./assets/group11black.png" class=" mr-auto h-12 w-auto" alt="">
+
+      <div @click="showNavMenu = false"  class="h-10 bg-gray-400 rounded-full w-10 flex justify-center items-center">
+
+        <svg  class="w-4 h-4 fill-current text-gray-700 hover:text-blue-500" viewBox="0 0 329.26933 329" xmlns="http://www.w3.org/2000/svg">
+          <path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/>
+        </svg>
+      </div>
+      </div>
+      <div class="flex flex-col w-full px-4 mt-4 justify-start items-center">
+        <div v-for="(navItem, ind) in navItems" class="w-full border-b border-gray-500 pt-4 pb-6" :key="ind" :to="navItem.route">
+        <router-link @mouseenter="dropdown = false" class="w-full" :to="navItem.route">
+          <p class="mr-4 w-full lg:mr-10 font-medium text-4xl text-left cursor-pointer" >{{navItem.name}}</p>
+
+        </router-link>
+        </div>
+      </div>
+      <div class="mt-auto mb-4 flex justify-start w-full px-4">
+        <p class='text-sm font-normal'>© Copyright 2020 MBA Anderson LLC</p>
+      </div>
+    </div>
     <div v-if="getUpdating.updatingDocument != ''" class="fixed h-screen flex items-center justify-center w-full" style="z-index:10000;">
       <div @click="cancelUpdating" class="absolute w-full h-screen bg-gray-500 opacity-75 z-0">
 
@@ -62,9 +85,30 @@
 
     </div>
     <header v-if="$router.currentRoute.path== '/'" class="absolute top-0 z-10 w-full text-gray-700 body-font" >
-      <div class="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
-        <img src="./assets/group11.png" class="w-32 md:w-64 h-auto" alt="">
+      <div class="container mx-auto flex flex-wrap p-4 md:p-5 flex-row items-center">
+        <img src="./assets/group11.png" class="h-12 w-auto" alt="">
 
+        <div @click="showNavMenu = true" class="ml-auto sm:hidden block flex justify-center items-center">
+          <svg  version="1.1" class="fill-current w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M492,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,236,492,236z"/>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M492,76H20C8.954,76,0,84.954,0,96s8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,76,492,76z"/>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M492,396H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20
+                  C512,404.954,503.046,396,492,396z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
         <div class="md:ml-auto hidden md:flex mt-2 items-end h-full justify-center">
           <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
             <div v-if="Array.isArray(navItem.dropdown)">
@@ -73,8 +117,8 @@
                 
                 <div v-show="dropdown" :class="dropdown ? ['pointer-events-auto'] : ['opacity-0', 'pointer-events-none', '-mt-2']" class="top-0 py-1 shadow-lg mt-6 absolute w-32 bg-white animatetest flex flex-col border border-gray-200 rounded">
                   <router-link :to="navInner.route" v-for="(navInner, ind2) in navItem.dropdown" :key="ind2">
-                  <div class="py-4 px-4 text-gray-800 hover:text-blue-500 cursor-pointer">
-                    <p class="text-sm uppercase" style="cursor: pointer !important">{{navInner.name}}</p>
+                  <div class="py-4 px-4 text-black hover:text-blue-500 cursor-pointer">
+                    <p class="text-sm" style="cursor: pointer !important">{{navInner.name}}</p>
                   </div>
                   </router-link>
 
@@ -84,7 +128,7 @@
               
             </div>
             <router-link @mouseenter="dropdown = false" v-else :to="navItem.route">
-              <a class="mr-8 font-medium uppercase cursor-pointer hover:text-white text-gray-200" >{{navItem.name}}</a>
+              <a :class="navItem.name=='Home' ? 'text-white' : 'text-gray-300'" class="mr-4 lg:mr-10 font-medium cursor-pointer hover:text-white " >{{navItem.name}}</a>
 
             </router-link>
           </div>
@@ -95,17 +139,38 @@
       </div>
     </header>
     <header v-else class="absolute top-0 z-10 w-full text-gray-700 body-font" >
-      <div class="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
-        <router-link @mouseenter="dropdown = false" to="/">
-          <img src="./assets/group11black.png" class="w-32 md:w-64 h-auto" alt="">
+      <div class="container mx-auto flex p-5 flex-row items-center">
+        <router-link @mouseenter="dropdown = false" class="h-12" to="/">
+          <img src="./assets/group11black.png" class="h-full w-auto" alt="">
 
 
         </router-link>
+        <div @click="showNavMenu = true" class="ml-auto sm:hidden block flex justify-center items-center">
+          <svg  version="1.1" class="fill-current w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M492,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,236,492,236z"/>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M492,76H20C8.954,76,0,84.954,0,96s8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,76,492,76z"/>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M492,396H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20
+                  C512,404.954,503.046,396,492,396z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
         <div class="md:ml-auto hidden md:flex mt-2 items-end h-full justify-center">
           <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
             <div v-if="Array.isArray(navItem.dropdown)">
               <div @mouseleave="dropdown = false" @mouseenter="dropdown = true" class="relative ">
-                <a :class="dropdown ? 'text-black' : ['text-gray-800', 'hover:text-black']" class="mr-8 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
+                <a :class="dropdown ? 'text-black' : ['text-gray-800', 'hover:text-black']" class="mr-8 h-12 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
                 
                 <div v-show="dropdown" :class="dropdown ? ['pointer-events-auto'] : ['opacity-0', 'pointer-events-none', '-mt-2']" class="top-0 py-1 shadow-lg mt-6 absolute w-32 bg-white animatetest flex flex-col border border-gray-200 rounded">
                   <router-link :to="navInner.route" v-for="(navInner, ind2) in navItem.dropdown" :key="ind2">
@@ -120,7 +185,7 @@
               
             </div>
             <router-link @mouseenter="dropdown = false" v-else :to="navItem.route">
-              <a class="mr-8 font-medium uppercase cursor-pointer hover:text-gray-800" :class="$router.currentRoute.path==navItem.route ? 'text-black' : 'text-gray-700'">{{navItem.name}}</a>
+              <a class="mr-4 lg:mr-10 font-medium cursor-pointer hover:text-gray-600" :class="$router.currentRoute.path==navItem.route ? 'text-blue-500' : 'text-gray-700'">{{navItem.name}}</a>
 
             </router-link>
           </div>
@@ -176,6 +241,9 @@ export default {
         window.console.log('and mee')
       }
     },
+    $route (){
+        this.showNavMenu = false
+    }
   },
   computed: {
     tracking() {
@@ -206,6 +274,7 @@ export default {
       removeLeaderMode: false,
       dropdown: false,
       modal: false,
+      showNavMenu: false,
       navItems: [
         {
           name: 'Home',
@@ -252,15 +321,26 @@ export default {
 </script>
 
 <style>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+ @import url('https://fonts.googleapis.com/css?family=Inter');
+
+  #app {
+    font-family: 'Inter', Helvetica, Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
 #nav {
   padding: 30px;
+}
+
+.nav-menu {
+  transition: right 0.3s ease;
+}
+
+.nav-menu-2 {
+  transition: right 0.3s ease;
 }
 
 #nav a {
