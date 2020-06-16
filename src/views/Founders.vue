@@ -1,15 +1,27 @@
 <template>
     <div class="h-screen mt-16 bg-white w-full items-center flex flex-col">
-        <section class="text-gray-700 body-font">
-            <div class="container px-5 py-12 flex flex-col items-center mx-auto">
+        <section class="text-gray-700 body-font w-full sm:w-3/4">
+            <div class="w-full py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-600">Founders</p>
-                    <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
+                    <div class="w-full h-64 lg:h-84 overflow-hidden relative ">
+                        <img class="min-h-64 min-w-full" style="top:50%; transform:translateY(-37%); filter: brightness(40%)" src="https://images.unsplash.com/photo-1573496774426-fe3db3dd1731?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80" alt="">
+                        <div class="absolute top-0 flex flex-col justify-center h-full w-full z-30">
+                            <p class="text-3xl md:text-5xl font-bold text-white">Founders</p>
+                        </div>
+                        
+                    </div>
+                    <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 
+                <div class="ml-auto " v-if="isAdmin">
+                        
+                    <button @click="$store.commit('updateDocument', 'Founders')" class="text-sm text-black">Edit founders
+                    </button>
                 </div>
-                <div class="flex flex-wrap w-full -m-4">
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in companies" :key="ind" v-scroll-to="{ el: '#' + company.name.split(' ').join('') }">
+
+                </div>
+                <div class="flex flex-wrap w-full -m-4 mb-12">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in founders" :key="ind" v-scroll-to="{ el: '#' + company.name.split(' ').join('') }">
                         <a class="block relative h-32 rounded overflow-hidden">
                         <div class="flex justify-center items-center w-full h-full relative">
                             <img v-if="company.site" alt="ecommerce" class="object-cover mx-auto object-center block" style="height: 75px; width: 75px;" :src="'//logo.clearbit.com/'+company.site">
@@ -23,6 +35,8 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-32 mx-auto h-1 bg-yellow-500"></div>
 
                 <section v-for="(company,ind) in companies" :id="company.name.split(' ').join('')" :key="ind" class="text-gray-700 body-font">
                     <div class="container mx-auto flex px-5 py-16 border-b border-t border-gray-200 md:flex-row flex-col items-center">
@@ -199,6 +213,14 @@ export default {
                     looking: "",
                 },
             ],
+        }
+    },
+    computed: {
+        founders(){
+            return this.$store.getters.getFounders
+        },
+        isAdmin(){
+            return this.$store.getters.getIsAdmin
         }
     }
 }

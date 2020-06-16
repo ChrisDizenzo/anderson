@@ -7773,6 +7773,10 @@ video {
   min-height: 0;
 }
 
+.min-h-64{
+  min-height: 16rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }

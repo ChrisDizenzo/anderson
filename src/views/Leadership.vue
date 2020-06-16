@@ -8,7 +8,7 @@
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                     <div class="ml-auto " v-if="isAdmin">
                         
-                    <button @click="$store.commit('updateLeadership')" v-if="isAdmin" class="text-sm text-black">Edit Leadership
+                    <button @click="$store.commit('updateDocument', 'Leadership')" class="text-sm text-black">Edit Leadership
                     </button>
                 </div>
                 </div>

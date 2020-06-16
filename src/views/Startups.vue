@@ -1,16 +1,32 @@
 <template>
     <div class="h-screen mt-16 bg-white w-full items-center flex flex-col">
-        <section class="text-gray-700 body-font w-3/4">
-            <div class="w-full px-5 py-12 flex flex-col items-center mx-auto">
+        <section class="text-gray-700 body-font w-full sm:w-3/4">
+            <div class="w-full py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
-                    <p class="text-2xl md:text-5xl font-light text-blue-600">Startups</p>
-                    <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
+                    <div class="w-full h-32 md:64 lg:h-84 overflow-hidden relative ">
+                        <img class="min-w-full" style="top:50%; transform:translateY(-15%)" src="https://images.unsplash.com/photo-1558402529-d2638a7023e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="">
+                        <div class="absolute top-0 flex flex-col justify-center h-full w-full z-30">
+                            <p class="text-3xl md:text-5xl font-bold text-white">Startups</p>
+                        </div>
+                        <div class="absolute top-0 w-full h-full bg-black opacity-50">
+
+                        </div>
+                        
+                    </div>
+                    
+                    <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-gray-800 text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 
+                <div class="ml-auto " v-if="isAdmin">
+                        
+                    <button @click="$store.commit('updateDocument', 'startup')" class="text-sm text-black">Edit Startups
+                    </button>
                 </div>
-                <div class="flex flex-wrap w-full -m-4">
+
+                </div>
+                <div class="flex flex-wrap w-full -m-4 mb-12">
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in companies" :key="ind">
                         <a class="block relative h-32 rounded overflow-hidden">
                         <div class="flex justify-center items-center w-full h-full relative">
@@ -72,7 +88,7 @@
                     <div class="w-full h-full md:h-auto md:w-1/2 md:rounded-md px-5 bg-white py-4  mx-auto">
                     <div class="flex flex-col text-center w-full mb-12">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-                    <p class="w-full lg:w-2/3 leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
+                    <p class="w-full lg:w-2/3 lg:mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
                     
                     
                     </div>
@@ -149,37 +165,45 @@ export default {
         return {
             companies: 
             [
-            {
-                name: 'Hiyo', 
-                url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/hiyo.jpg'
-            },
-            {
-                name: 'Wire', 
-                url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/wire.jpg',
-            },
-            {
-                name: 'Vhomes', 
-                url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/vhomes.jpg'
-            },
-            {
-                name: 'RealAppeal', 
-                url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/real.jpg'
-            },
-            {
-                name: 'Gen Beauty', 
-                url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/gen.jpg'
-            },
-            {
-                name: 'Sahara',
-                url: 'https://i.imgur.com/QeYfrxi.png',
-            },
-            {
-                name: 'Gucci', 
-                site: 'Gucci.com'
-            },
-            
+                {
+                    name: 'Hiyo', 
+                    url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/hiyo.jpg'
+                },
+                {
+                    name: 'Wire', 
+                    url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/wire.jpg',
+                },
+                {
+                    name: 'Vhomes', 
+                    url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/vhomes.jpg'
+                },
+                {
+                    name: 'RealAppeal', 
+                    url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/real.jpg'
+                },
+                {
+                    name: 'Gen Beauty', 
+                    url: 'https://www.anderson.ucla.edu/images/2017/sites/centers/price/knapp/2020/gen.jpg'
+                },
+                {
+                    name: 'Sahara',
+                    url: 'https://i.imgur.com/QeYfrxi.png',
+                },
+                {
+                    name: 'Gucci', 
+                    site: 'Gucci.com'
+                },
+                
             ]
         }
+    },
+    computed: {
+        startUps(){
+            return this.$store.getters.getStartUps
+        },
+        isAdmin() {
+            return this.$store.getters.getIsAdmin
+        }, 
     }
 }
 </script>
