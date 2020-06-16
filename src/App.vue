@@ -322,12 +322,12 @@ export default {
           route: '/founders'
         },
         {
-          name: 'Leadership',
-          route: '/leadership'
-        },
-        {
           name: 'VC',
           route: '/vc'
+        },
+        {
+          name: 'Leadership',
+          route: '/leadership'
         },
         
       ]

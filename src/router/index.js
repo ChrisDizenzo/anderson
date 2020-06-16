@@ -38,16 +38,6 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/leadership',
-    name: 'Leadership',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Leadership.vue')
-    }
-  },
-  {
     path: '/startups',
     name: 'Startups',
     // route level code-splitting
@@ -65,6 +55,16 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/VC.vue')
+    }
+  },
+  {
+    path: '/leadership',
+    name: 'Leadership',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/Leadership.vue')
     }
   },
 
