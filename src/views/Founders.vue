@@ -10,7 +10,7 @@
                         </div>
                         
                     </div>
-                    <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
+                    <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">For opportunities, partnerships, or wanting to showcase your company please fill out the form!</p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 
                 <div class="ml-auto " v-if="isAdmin">

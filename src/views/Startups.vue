@@ -14,8 +14,8 @@
                         
                     </div>
                     
-                    <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-gray-800 text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
+                    <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-gray-800 text-base">Welcome to Silicon Beahc. Here at LA we have a vibrant start up community in the heart of entertaiment industry.</p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm" >Want to be listed?<span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 
@@ -48,7 +48,7 @@
                 <div class="w-full px-5 py-24 mx-auto">
                     <div class="flex flex-col text-center w-full mb-12">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">For opportunities, partnerships, or wanting to showcase your startup please fill out the form!</p>
                     
                     
                     </div>
