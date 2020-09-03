@@ -35,27 +35,28 @@
             <p class="leading-relaxed text-red-500 text-base">Your changes are PERMANENT.</p>
           </div>
           <div v-if="getUpdating.updatingDocument != 'Home'" class="w-full flex justify-end"> 
-            <button @click="newLeader" class="text-sm px-2 py-1 text-black mr-6">Add Value </button>
-            <button @click="removeLeaderMode = !removeLeaderMode" class="cursor-pointer text-sm px-2 py-1 mr-4 text-black">Remove Leader Mode: {{removeLeaderMode ? 'ON' : 'OFF'}}</button>
+            <button @click="newValue" class="text-sm px-2 bg-blue-500 text-white py-1 rounded mr-6"> + Add Value </button>
+            <button @click="removeLeaderMode = !removeLeaderMode" class="cursor-pointer text-sm px-2 py-1 mr-4 text-black">Delete Entry Mode: {{removeLeaderMode ? 'ON' : 'OFF'}}</button>
           </div>
            <div v-if="getUpdating.updatingDocument != 'Home'" class="w-full my-1 flex justify-between pr-6">
-              <div class="w-1/12 h-full">
-                <p class="text-left font-bold">Delete</p>
-              </div>
-              <p class="text-left font-bold w-1/12">Order</p>
+              <div class="flex-1 flex h-full">
+                <p v-if="removeLeaderMode" class="text-left font-bold">Delete</p>
+                <p class="text-left font-bold w-1/12">Order</p>
 
-              <div v-for="(leaderKey, ind) in Object.keys(changeArray[0])" :key="ind+1000" class="w-1/6">
+              </div>
+
+              <div v-for="(leaderKey, ind) in Object.keys(changeArray[0]).sort()" :key="ind+1000" class="flex-1">
                 <p class="text-left font-bold">{{leaderKey.charAt(0).toUpperCase() + leaderKey.slice(1)}}</p>
               </div>
             </div>
           <div v-if="getUpdating.updatingDocument == 'Home'" class="lg:w-full md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
               <div class="p-2 w-full">
-                <textarea @input="updateValue($event.target.value)" :value="getUpdatingValue" class="w-full border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Message"></textarea>
+                <textarea @change="updateValue($event.target.value)" :value="getUpdatingValue" class="w-full border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Message"></textarea>
               </div>
               <div class="p-2 flex justify-end w-full">
                 <button @click="pushToFirebase" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Confirm</button>
-                <button @click="cancelUpdating" class="flex mx-auto text-gray-700 hover:text-black border border-gray-400 hover:border-gray-600 bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg">Cancel</button>
+                <button @click="cancelUpdating" class="flex mx-auto text-gray-700 hover:text-black border-gray-400 hover:border-gray-600 bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg">Cancel</button>
               </div>
             </div>
           </div>
@@ -69,8 +70,8 @@
               <select :value="ind" @change="changeSelect(ind, $event)" class="w-1/12">
                 <option v-for="(val, ind3) in changeArray" :key="ind3" :value="ind3">{{ind3+1}}</option>
               </select>
-              <div v-for="(leaderKey, ind2) in Object.keys(leader)" :key="ind2+100" class="w-1/6">
-                <input @input="changeLeader(ind2, leaderKey, $event.target.value)" :value="leader[leaderKey]" class="w-full border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Input here">
+              <div v-for="(leaderKey, ind4) in Object.keys(leader).sort()" :key="ind4+100" class="flex-1">
+                <input @change="changeLeader(ind4, leaderKey, $event.target.value)" :value="leader[leaderKey]" class="w-full border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Input here">
               </div>
               
             </div>
@@ -78,16 +79,19 @@
           </div>
           <div v-if="getUpdating.updatingDocument != 'Home'" class="p-2 flex justify-end w-full">
                 <button @click="pushToFirebase" class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Confirm</button>
-                <button @click="cancelUpdating" class="flex mx-auto text-gray-700 hover:text-black border border-gray-400 hover:border-gray-600 bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg">Cancel</button>
+                <button @click="cancelUpdating" class="flex mx-auto text-gray-700 hover:text-black border-gray-400 hover:border-gray-600 bg-white border-0 py-2 px-8 focus:outline-none rounded text-lg">Cancel</button>
               </div>
         </div>
       </section>
 
     </div>
-    <header v-if="$router.currentRoute.path== '/'" class="absolute top-0 z-10 w-full text-gray-700 body-font" >
+    <header style="z-index: 10000;" :class="($router.currentRoute.path=='/' && scrollDist<10) ? ['bw-white'] : scrollDist<10 ? '' : ['shadow-md', 'bg-white']" class="fixed top-0 z-10 transition duration-200 w-full text-gray-700 body-font" >
       <div class="w-full md:w-3/4 mx-auto flex flex-wrap py-5 flex-row items-center">
-        <img src="./assets/group11.png" class="h-12 w-auto" alt="">
-
+      <router-link to="/"> 
+        <img v-if="$router.currentRoute.path=='/' && scrollDist<10" src="./assets/group11.png" class="h-12 w-auto" alt="">
+        <img v-else-if="$router.currentRoute.path=='/'" src="./assets/group11black.png" class="h-12 w-auto" alt="">
+        <img v-else src="./assets/group11black.png" class="h-12 w-auto" alt="">
+      </router-link>
         <div @click="showNavMenu = true" class="ml-auto sm:hidden block flex justify-center items-center">
           <svg  version="1.1" class="fill-current w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -113,7 +117,7 @@
           <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
             <div v-if="Array.isArray(navItem.dropdown)">
               <div @mouseleave="dropdown = false" @mouseenter="dropdown = true" class="relative ">
-                <a :class="dropdown ? 'text-white' : ['text-gray-300', 'hover:text-white']" class="mr-8 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
+                <a :class="dropdown ? 'text-white' : ['text-gray-300', 'hover:text-white']" class="mr-8 transition duration-200 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
                 
                 <div v-show="dropdown" :class="dropdown ? ['pointer-events-auto'] : ['opacity-0', 'pointer-events-none', '-mt-2']" class="top-0 py-1 shadow-lg mt-6 absolute w-32 bg-white animatetest flex flex-col border border-gray-200 rounded">
                   <router-link :to="navInner.route" v-for="(navInner, ind2) in navItem.dropdown" :key="ind2">
@@ -127,74 +131,22 @@
               </div>
               
             </div>
+            
             <router-link @mouseenter="dropdown = false" v-else :to="navItem.route">
-              <a :class="navItem.name=='Home' ? 'text-white' : 'text-gray-300'" class="mr-4 lg:mr-10 font-medium cursor-pointer hover:text-white " >{{navItem.name}}</a>
+              <a :class="$router.currentRoute.path==navItem.route ? 'text-blue-500' : ($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 lg:mr-10 transition duration-200 font-medium cursor-pointer" >{{navItem.name}}</a>
 
             </router-link>
+            
           </div>
+          <a :class="($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 transition duration-200 lg:mr-10 font-medium cursor-pointer" >Apply to EA</a>
+          
             
 
 
         </div>
       </div>
     </header>
-    <header v-else class="absolute top-0 z-10 w-full text-gray-700 body-font" >
-      <div class="w-full md:w-3/4 mx-auto flex py-5 flex-row items-center">
-        <router-link @mouseenter="dropdown = false" class="h-12" to="/">
-          <img src="./assets/group11black.png" class="h-full w-auto" alt="">
-
-
-        </router-link>
-        <div @click="showNavMenu = true" class="ml-auto sm:hidden block flex justify-center items-center">
-          <svg  version="1.1" class="fill-current w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-            <g>
-              <g>
-                <path d="M492,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,236,492,236z"/>
-              </g>
-            </g>
-            <g>
-              <g>
-                <path d="M492,76H20C8.954,76,0,84.954,0,96s8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,76,492,76z"/>
-              </g>
-            </g>
-            <g>
-              <g>
-                <path d="M492,396H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20
-                  C512,404.954,503.046,396,492,396z"/>
-              </g>
-            </g>
-          </svg>
-        </div>
-        <div class="md:ml-auto hidden md:flex mt-2 items-end h-full justify-center">
-          <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
-            <div v-if="Array.isArray(navItem.dropdown)">
-              <div @mouseleave="dropdown = false" @mouseenter="dropdown = true" class="relative ">
-                <a :class="dropdown ? 'text-black' : ['text-gray-800', 'hover:text-black']" class="mr-8 h-12 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
-                
-                <div v-show="dropdown" :class="dropdown ? ['pointer-events-auto'] : ['opacity-0', 'pointer-events-none', '-mt-2']" class="top-0 py-1 shadow-lg mt-6 absolute w-32 bg-white animatetest flex flex-col border border-gray-200 rounded">
-                  <router-link :to="navInner.route" v-for="(navInner, ind2) in navItem.dropdown" :key="ind2">
-                  <div class="py-4 px-4 text-gray-800 hover:text-blue-500 cursor-pointer">
-                    <p class="text-sm uppercase" style="cursor: pointer !important">{{navInner.name}}</p>
-                  </div>
-                  </router-link>
-
-                </div>
-
-              </div>
-              
-            </div>
-            <router-link @mouseenter="dropdown = false" v-else :to="navItem.route">
-              <a class="mr-4 lg:mr-10 font-medium cursor-pointer hover:text-gray-600" :class="$router.currentRoute.path==navItem.route ? 'text-blue-500' : 'text-gray-700'">{{navItem.name}}</a>
-
-            </router-link>
-          </div>
-            
-
-
-        </div>
-      </div>
-    </header>
+    
     <router-view/>
   </div>
 </template>
@@ -206,11 +158,15 @@ export default {
     changeLeader(ind, keyChanged, val) {
       this.changeArray[ind][keyChanged] = val
     },
+    updateScroll() {
+      this.scrollDist = window.top.scrollY
+    },
     cancelUpdating() {
       this.$store.commit('cancelUpdating')
     },
-    newLeader() {
-      this.changeArray.push(
+    newValue() {
+      if(this.updatingVariable.updatingDocument == 'Leadership') {
+        this.changeArray.push(
       {
         name: "",
         title: "",
@@ -219,6 +175,35 @@ export default {
         linkedin: "",
       }
       )
+      } else if(this.updatingVariable.updatingDocument == 'startup') {
+        this.changeArray.push(
+      {
+        name: "",
+        title: "",
+        img: "",
+        email: "",
+        linkedin: "",
+      }
+      )
+      } else if(this.updatingVariable.updatingDocument == 'Founders') {
+        this.changeArray.push(
+      {
+        name: "",
+        title: "",
+        img: "",
+        email: "",
+        linkedin: "",
+      }
+      )
+      } else if(this.updatingVariable.updatingDocument == 'VentureCapital') {
+        this.changeArray.push(
+      {
+        name: "",
+        url: "",
+      }
+      )
+      }
+      
     },
     updateValue(val) {
       this.$store.commit('setUpdatingValue', val)
@@ -236,11 +221,9 @@ export default {
   },
   watch: {
     updatingVariable () {
-      window.console.log('here i am', this.updatingVariable.updatingDocument)
       if(this.updatingVariable.updatingDocument == 'Leadership') {
         this.changeArray = this.leadership.slice(0)
-        window.console.log('and mee')
-      } else if(this.updatingVariable.updatingDocument == 'Startups') {
+      } else if(this.updatingVariable.updatingDocument == 'startup') {
         this.changeArray = this.startUps.slice(0)
       } else if(this.updatingVariable.updatingDocument == 'Founders') {
         this.changeArray = this.founders.slice(0)
@@ -250,6 +233,7 @@ export default {
     },
     $route (){
         this.showNavMenu = false
+        window.scrollTo(0,0)
     }
   },
   computed: {
@@ -283,19 +267,17 @@ export default {
   },
   mounted () {
     this.$store.commit('pullFirebase')
+    window.addEventListener('scroll', this.updateScroll);
   },
   data() {
     return {
       changeArray: [],
+      scrollDist: 0,
       removeLeaderMode: false,
       dropdown: false,
       modal: false,
       showNavMenu: false,
       navItems: [
-        {
-          name: 'Home',
-          route: '/'
-        },
         // {
         //   name: 'About',
         //   dropdown: [
@@ -373,5 +355,14 @@ export default {
     -moz-transition: all 500ms ease-out;
     -o-transition: all 500ms ease-out;
     transition: all 500ms ease-out;
+}
+
+.transition {
+  transition-property: all;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>

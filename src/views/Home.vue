@@ -2,7 +2,7 @@
   <div>
     
 
-    <div class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
+    <div class="relative pb-16 flex content-center items-center justify-center" style="min-height: 75vh;">
       <div class="absolute hidden sm:block top-0 w-full h-full bg-center bg-cover bg-image" :style="{'background-position-y': (scrollDist*-350 - 50)+'px'}">
         <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
@@ -18,13 +18,13 @@
           <div class="w-full lg:w-full px-4 ml-auto mr-auto flex flex-col items-center text-center">
             <p class="mb-2 text-2xl md:text-4xl text-white font-bold border-b-2 border-white lg:w-72" @click="updateVariable('title')"><span v-html="home.title"></span></p>
             <p class="text-2xl md:text-5xl text-white font-bold" @click="updateVariable('titleSub')"><span v-html="home.titleSub"></span></p>
-
+            <a href="https://www.anderson.ucla.edu/apply" class="text-lg mt-8 text-white bg-blue-600 hover:bg-blue-700 rounded px-8 py-2">Apply to Anderson</a>
           </div>
         </div>
       </div>
       
     </div>
-    <div class="w-full flex flex-col items-center">
+    <!-- <div class="w-full flex flex-col items-center">
       <section class="text-gray-700  body-font">
       <div class="container px-5 py-12 sm:py-24 mx-auto">
         <div class="lg:w-3/4 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
@@ -33,7 +33,7 @@
         </div>
       </div>
     </section>
-    </div>
+    </div> -->
 
     <section class="text-gray-700 bg-gray-200 body-font">
       <div class="container mx-auto flex px-5 py-20 md:flex-row flex-col items-center">
@@ -169,7 +169,7 @@
     </div>
   
 
-  <section class="text-gray-700 mb-12 body-font">
+  <!-- <section class="text-gray-700 mb-12 body-font">
       <div class="container px-5 py-24 mx-auto">
         <div class="flex items-center lg:w-full mx-auto border-b pb-16 mb-16 border-gray-200 sm:flex-row flex-col">
           <div class="w-3/4 sm:w-3/4 sm:hidden lg:inline-flex items-center justify-center rounded-full text-teal-500">
@@ -182,7 +182,7 @@
           
           </div>
         </div>
-        <div class="flex flex-col-reverse sm:flex-row items-center lg:w-full mx-auto border-b pb-16 mb-16 border-gray-200 sm:flex-row flex-col">
+        <div class="flex flex-col-reverse sm:flex-row items-center lg:w-full mx-auto border-b pb-16 mb-16 border-gray-200">
           <div class="flex-grow lg:w-1/2 sm:text-left text-center mt-6 sm:mt-0">
             <h2 class="text-gray-900 text-xl title-font font-bold mb-2" @click="updateVariable('benefits2Title')">{{home.benefits2Title}}</h2>
             <p class="leading-relaxed text-base" @click="updateVariable('benefits2Desc')"><span v-html="home.benefits2Desc"></span>  </p>
@@ -204,7 +204,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     
     
