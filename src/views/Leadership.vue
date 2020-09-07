@@ -4,7 +4,7 @@
             <div class=" px-5 py-12 flex flex-col items-center mx-auto">
                 <div class="flex flex-col text-center w-full mb-12">
                     <p class="text-2xl md:text-5xl font-light text-blue-600" >Leadership</p>
-                    <p class="lg:w-3/5 mx-auto leading-relaxed text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula </p>
+                    <p class="lg:w-3/5 mx-auto leading-relaxed text-base">{{leadership.heading}}</p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                     <div class="ml-auto " v-if="isAdmin">
                         
@@ -16,7 +16,7 @@
                 
 
                 <div class="flex flex-wrap w-full -m-4">
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full mb-8" v-for="(leader,ind) in leadership" :key="ind">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full mb-8" v-for="(leader,ind) in leadership.arr" :key="ind">
                         <a class="block relative overflow-hidden">
                         <div class="flex justify-center items-center w-full h-full">
                             <img :alt="leader.name" class="object-cover mx-auto object-center block h-auto" :class="clicky ? ['rounded-full', 'w-4/5'] : ['w-full']" :src="leader.img">
@@ -36,28 +36,9 @@
 
                             <p class="text-center font-normal text-sm text-gray-600 leading-relaxed uppercase">{{leader.title}} </p>
                             
-                            <div class="flex mt-2 w-full ">
-                                <div class="w-6 h-6 relative ml-auto">
-                                    <div class="absolute w-full h-full bg-white opacity-50 hover:opacity-0 cursor-pointer"></div>
-                                    <svg version="1.1" class="w-full h-full fill-current text-blue" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                    <path style="fill:#0077B7;" d="M496,112.011H272c-8.832,0-16,7.168-16,16s7.168,16,16,16h177.376l-98.304,76.448l-70.496-44.832
-                                        l-17.152,27.008l80,50.88c2.592,1.664,5.6,2.496,8.576,2.496c3.456,0,6.944-1.12,9.824-3.36L480,160.715v207.296H272
-                                        c-8.832,0-16,7.168-16,16s7.168,16,16,16h224c8.832,0,16-7.168,16-16v-256C512,119.179,504.832,112.011,496,112.011z"/>
-                                    <path style="fill:#0077B7;" d="M282.208,19.691c-3.648-3.04-8.544-4.352-13.152-3.392l-256,48C5.472,65.707,0,72.299,0,80.011v352
-                                        c0,7.68,5.472,14.304,13.056,15.712l256,48c0.96,0.192,1.952,0.288,2.944,0.288c3.712,0,7.328-1.28,10.208-3.68
-                                        c3.68-3.04,5.792-7.584,5.792-12.32v-448C288,27.243,285.888,22.731,282.208,19.691z"/>
-                                    <path style="fill:#FAFAFA;" d="M144,368.011c-44.096,0-80-43.072-80-96s35.904-96,80-96s80,43.072,80,96
-                                        S188.096,368.011,144,368.011z M144,208.011c-26.464,0-48,28.704-48,64s21.536,64,48,64s48-28.704,48-64
-                                        S170.464,208.011,144,208.011z"/>
-                                    <g>
-                                    </g>
-                                </svg>
-                                </div>
-
-                                <div class="w-6 h-6 relative ml-6 mr-auto">
-                                    <div class="absolute w-full h-full bg-white opacity-50 hover:opacity-0 cursor-pointer"></div>
-                                    <svg version="1.1" class="w-full h-full fill-current text-blue" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            <div class="flex justify-around mt-2 w-full ">
+                                <a :href="leader.linkedin" target="_blank" v-if="leader.linkedin!=''" class="w-6 h-6 relative ">
+                                    <svg version="1.1" class="w-full h-full fill-current text-blue opacity-50 hover:opacity-100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 382 382" style="enable-background:new 0 0 382 382;" xml:space="preserve">
                                         <path style="fill:#0077B7;" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
                                             C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
@@ -71,7 +52,26 @@
                                         <g>
                                         </g>
                                     </svg>
-                                </div>
+                                </a>
+
+                                <a :href="'mailto:'+leader.email" v-if="leader.email!=''" class="w-6 h-6 relative">
+                                    <div class="absolute w-full h-full bg-white opacity-50 hover:opacity-0 cursor-pointer" style="pointer-events: none"></div>
+                                    
+                                    <svg version="1.1" class="w-full h-full fill-current text-blue" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                        <path style="fill:#0077B7;" d="M496,112.011H272c-8.832,0-16,7.168-16,16s7.168,16,16,16h177.376l-98.304,76.448l-70.496-44.832
+                                            l-17.152,27.008l80,50.88c2.592,1.664,5.6,2.496,8.576,2.496c3.456,0,6.944-1.12,9.824-3.36L480,160.715v207.296H272
+                                            c-8.832,0-16,7.168-16,16s7.168,16,16,16h224c8.832,0,16-7.168,16-16v-256C512,119.179,504.832,112.011,496,112.011z"/>
+                                        <path style="fill:#0077B7;" d="M282.208,19.691c-3.648-3.04-8.544-4.352-13.152-3.392l-256,48C5.472,65.707,0,72.299,0,80.011v352
+                                            c0,7.68,5.472,14.304,13.056,15.712l256,48c0.96,0.192,1.952,0.288,2.944,0.288c3.712,0,7.328-1.28,10.208-3.68
+                                            c3.68-3.04,5.792-7.584,5.792-12.32v-448C288,27.243,285.888,22.731,282.208,19.691z"/>
+                                        <path style="fill:#FAFAFA;" d="M144,368.011c-44.096,0-80-43.072-80-96s35.904-96,80-96s80,43.072,80,96
+                                            S188.096,368.011,144,368.011z M144,208.011c-26.464,0-48,28.704-48,64s21.536,64,48,64s48-28.704,48-64
+                                            S170.464,208.011,144,208.011z"/>
+                                        <g>
+                                        </g>
+                                    </svg>
+                                </a>
 
 
                                 

@@ -10,7 +10,7 @@
                         </div>
                         
                     </div>
-                    <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">For opportunities, partnerships, or wanting to showcase your company please fill out the form!</p>
+                    <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">{{founders.heading}}</p>
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 
                 <div class="ml-auto " v-if="isAdmin">
@@ -21,7 +21,7 @@
 
                 </div>
                 <div class="flex flex-wrap w-full -m-4 mb-12">
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in founders" :key="ind" v-scroll-to="{ el: '#' + company.name.split(' ').join('') }">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in founders.arr" :key="ind" v-scroll-to="{ el: '#' + company.name.split(' ').join('') }">
                         <a class="block relative h-32 rounded overflow-hidden">
                         <div class="flex justify-center items-center w-full h-full relative">
                             <img v-if="company.site" alt="ecommerce" class="object-cover mx-auto object-center block" style="height: 75px; width: 75px;" :src="'//logo.clearbit.com/'+company.site">
@@ -38,7 +38,7 @@
 
                 <div class="w-32 mx-auto h-1 bg-yellow-500"></div>
 
-                <section v-for="(company,ind) in companies" :id="company.name.split(' ').join('')" :key="ind" class="text-gray-700 body-font">
+                <section v-for="(company,ind) in founders.arr" :id="company.name.split(' ').join('')" :key="ind" class="text-gray-700 body-font">
                     <div class="container mx-auto flex px-5 py-16 border-b border-t border-gray-200 md:flex-row flex-col items-center">
                         <div class="md:w-1/4 w-5/6 mb-10 md:mb-0">
                             <img class="object-cover object-center rounded mx-auto" alt="hero" :src="company.url">

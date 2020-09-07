@@ -38,6 +38,11 @@
             <button @click="newValue" class="text-sm px-2 bg-blue-500 text-white py-1 rounded mr-6"> + Add Value </button>
             <button @click="removeLeaderMode = !removeLeaderMode" class="cursor-pointer text-sm px-2 py-1 mr-4 text-black">Delete Entry Mode: {{removeLeaderMode ? 'ON' : 'OFF'}}</button>
           </div>
+          <p class="text-sm text-left w-full font-bold">Heading</p>
+          <input v-model="heading" class="border border-gray-400 focus:outline-none w-3/4 focus:border-indigo-500 text-base px-4 py-2 mb-2 resize-none block" placeholder="Input here">
+          <p v-if="getUpdating.updatingDocument=='startup' || getUpdating.updatingDocument == 'VentureCapital'" class="text-sm text-left w-full font-bold">Contact Us heading</p>
+          <input v-if="getUpdating.updatingDocument=='startup' || getUpdating.updatingDocument == 'VentureCapital'" v-model="contactHeading" class="border border-gray-400 focus:outline-none w-3/4 focus:border-indigo-500 text-base px-4 py-2 mb-2 resize-none block" placeholder="Input here">
+
            <div v-if="getUpdating.updatingDocument != 'Home'" class="w-full my-1 flex justify-between pr-6">
               <div class="flex-1 flex h-full">
                 <p v-if="removeLeaderMode" class="text-left font-bold">Delete</p>
@@ -49,6 +54,7 @@
                 <p class="text-left font-bold">{{leaderKey.charAt(0).toUpperCase() + leaderKey.slice(1)}}</p>
               </div>
             </div>
+
           <div v-if="getUpdating.updatingDocument == 'Home'" class="lg:w-full md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
               <div class="p-2 w-full">
@@ -62,7 +68,6 @@
           </div>
           
           <div v-else-if="getUpdating.updatingDocument != 'Home'" class="lg:w-full overflow-y-scroll md:w-2/3 mx-auto" style="max-height: 400px">
-           
             <div v-for="(leader, ind) in changeArray" :key="ind" class="w-full my-1 flex justify-between pr-6">
               <div class="w-1/12 h-full bg-red-500">
                 <p v-if="removeLeaderMode" @click="changeArray.splice(ind, 1)">X</p>
@@ -71,7 +76,7 @@
                 <option v-for="(val, ind3) in changeArray" :key="ind3" :value="ind3">{{ind3+1}}</option>
               </select>
               <div v-for="(leaderKey, ind4) in Object.keys(leader).sort()" :key="ind4+100" class="flex-1">
-                <input @change="changeLeader(ind4, leaderKey, $event.target.value)" :value="leader[leaderKey]" class="w-full border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Input here">
+                <input @input="changeLeader(ind, leaderKey, $event.target.value)" :value="leader[leaderKey]" class="w-full border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Input here">
               </div>
               
             </div>
@@ -156,6 +161,7 @@
 export default {
   methods: {
     changeLeader(ind, keyChanged, val) {
+      window.console.log(ind, keyChanged, val)
       this.changeArray[ind][keyChanged] = val
     },
     updateScroll() {
@@ -163,6 +169,7 @@ export default {
     },
     cancelUpdating() {
       this.$store.commit('cancelUpdating')
+      this.changeArray = []
     },
     newValue() {
       if(this.updatingVariable.updatingDocument == 'Leadership') {
@@ -172,6 +179,7 @@ export default {
         title: "",
         img: "",
         email: "",
+        quote: "",
         linkedin: "",
       }
       )
@@ -179,20 +187,17 @@ export default {
         this.changeArray.push(
       {
         name: "",
-        title: "",
-        img: "",
-        email: "",
-        linkedin: "",
+        url: "",
       }
       )
       } else if(this.updatingVariable.updatingDocument == 'Founders') {
         this.changeArray.push(
       {
-        name: "",
-        title: "",
-        img: "",
-        email: "",
-        linkedin: "",
+        url: "",
+        name: '',
+        desc: '',
+        team: "",
+        looking: "",
       }
       )
       } else if(this.updatingVariable.updatingDocument == 'VentureCapital') {
@@ -211,8 +216,8 @@ export default {
 
     pushToFirebase() {
       //check to see that data is ok
-      this.$store.commit('pushToFirebase', this.changeArray)
-      this.$store.commit('pullFirebase')
+      window.console.log(this.changeArray, this.heading, 'now sending!')
+      this.$store.commit('pushToFirebase', {val: this.changeArray, val2: this.heading, val3: this.contactHeading})
     },
     changeSelect(prevInd, val) {
       let hold = this.changeArray.splice(prevInd,1)
@@ -222,13 +227,21 @@ export default {
   watch: {
     updatingVariable () {
       if(this.updatingVariable.updatingDocument == 'Leadership') {
-        this.changeArray = this.leadership.slice(0)
+        this.changeArray = this.leadership.arr.slice(0)
+        this.heading = this.leadership.heading
+        this.contactHeading = this.leadership.contactHeading
       } else if(this.updatingVariable.updatingDocument == 'startup') {
-        this.changeArray = this.startUps.slice(0)
+        this.changeArray = this.startUps.arr.slice(0)
+        this.heading = this.startUps.heading
+        this.contactHeading = this.startUps.contactHeading
       } else if(this.updatingVariable.updatingDocument == 'Founders') {
-        this.changeArray = this.founders.slice(0)
+        this.changeArray = this.founders.arr.slice(0)
+        this.heading = this.founders.heading
+        this.contactHeading = this.founders.contactHeading
       } else if(this.updatingVariable.updatingDocument == 'VentureCapital') {
-        this.changeArray = this.ventureCapital.slice(0)
+        this.changeArray = this.ventureCapital.arr.slice(0)
+        this.heading = this.ventureCapital.heading
+        this.contactHeading = this.ventureCapital.contactHeading
       }
     },
     $route (){
@@ -272,7 +285,9 @@ export default {
   data() {
     return {
       changeArray: [],
+      heading: '',
       scrollDist: 0,
+      contactHeading: '',
       removeLeaderMode: false,
       dropdown: false,
       modal: false,

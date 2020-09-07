@@ -13,7 +13,7 @@
                         </div>
                         
                     </div>
-                    <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus, lectus nibh molestie felis, sed maximus.</p>
+                    <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-base">{{ventureCapital.heading}}</p>
                     <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
@@ -26,7 +26,7 @@
 
                 </div>
                 <div class="flex flex-wrap w-full -m-4 mb-12">
-                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in companies" :key="ind">
+                    <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="(company,ind) in ventureCapital.arr" :key="ind">
                         <a class="block relative h-32 rounded overflow-hidden">
                         <div class="flex justify-center items-center w-full h-full relative">
                             <img v-if="company.site" alt="ecommerce" class="object-cover mx-auto object-center block" style="height: 75px; width: 75px;" :src="'//logo.clearbit.com/'+company.site">
@@ -55,7 +55,7 @@
                 </span>
                 </div>
                 
-                <div class="container relative mx-auto h-full">
+                <div class="container relative mx-auto h-full" id="contact">
                 <div class="items-center flex flex-col h-full justify-center">
                     <div class="w-1/2 rounded-md px-5 bg-white py-4  mx-auto">
                     <div class="flex flex-col text-center w-full mb-12">
