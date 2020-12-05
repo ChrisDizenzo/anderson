@@ -14,7 +14,7 @@
                         
                     </div>
                     <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-base">{{ventureCapital.heading}}</p>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >Lorem ipsum dolor simet col <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed mt-4 text-sm" >{{ventureCapital.contactHeading}} <span class="text-blue-500 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 

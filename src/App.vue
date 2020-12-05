@@ -38,8 +38,8 @@
             <button @click="newValue" class="text-sm px-2 bg-blue-500 text-white py-1 rounded mr-6"> + Add Value </button>
             <button @click="removeLeaderMode = !removeLeaderMode" class="cursor-pointer text-sm px-2 py-1 mr-4 text-black">Delete Entry Mode: {{removeLeaderMode ? 'ON' : 'OFF'}}</button>
           </div>
-          <p class="text-sm text-left w-full font-bold">Heading</p>
-          <input v-model="heading" class="border border-gray-400 focus:outline-none w-3/4 focus:border-indigo-500 text-base px-4 py-2 mb-2 resize-none block" placeholder="Input here">
+          <p v-if="getUpdating.updatingDocument != 'Home'" class="text-sm text-left w-full font-bold">Heading</p>
+          <input v-if="getUpdating.updatingDocument != 'Home'" v-model="heading" class="border border-gray-400 focus:outline-none w-3/4 focus:border-indigo-500 text-base px-4 py-2 mb-2 resize-none block" placeholder="Input here">
           <p v-if="getUpdating.updatingDocument=='startup' || getUpdating.updatingDocument == 'VentureCapital'" class="text-sm text-left w-full font-bold">Contact Us heading</p>
           <input v-if="getUpdating.updatingDocument=='startup' || getUpdating.updatingDocument == 'VentureCapital'" v-model="contactHeading" class="border border-gray-400 focus:outline-none w-3/4 focus:border-indigo-500 text-base px-4 py-2 mb-2 resize-none block" placeholder="Input here">
 
@@ -143,7 +143,7 @@
             </router-link>
             
           </div>
-          <a :class="($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 transition duration-200 lg:mr-10 font-medium cursor-pointer" >Apply to EA</a>
+          <a href="https://uclaanderson.campusgroups.com/entrepreneur/club_signup" target="_blank" :class="($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 transition duration-200 lg:mr-10 font-medium cursor-pointer" >Apply to EA</a>
           
             
 

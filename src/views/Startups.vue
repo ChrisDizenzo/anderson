@@ -15,7 +15,7 @@
                     </div>
                     
                     <p class="lg:w-3/5 mx-auto mt-6 leading-relaxed text-gray-800 text-base">{{startUps.heading}}</p>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm" >Want to be listed?<span class="text-blue-500 ml-2 cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm" >{{startUps.contactHeading}} <span class="text-blue-500 ml-1s cursor-pointer hover:underline" v-scroll-to="'#contact'">Click here</span></p>
                     
                     <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
                 

@@ -46,7 +46,7 @@
                         <div class="md:flex-1 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{company.name}}
                         </h1>
-                        <p class="mb-4 leading-relaxed"><span class="font-bold text-gray-700">Description: </span> {{company.desc}}</p>
+                        <p v-if="company.desc != ''" class="mb-4 leading-relaxed"><span class="font-bold text-gray-700">Description: </span> {{company.desc}}</p>
                         <p v-if="company.team!=''" class="mb-4"> <span class="font-bold text-gray-700">Team: </span> {{company.team}}</p>
                         <p v-if="company.looking != ''" class="mt-6 mb-2"> <span class="font-bold p-1 rounded bg-blue-700 text-white">Looking for:</span>  {{company.looking}}</p>
                         <div class="flex mt-12 justify-center">

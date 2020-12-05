@@ -50,31 +50,6 @@
 
     
 
-  <div ref="img2" class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
-    <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2)*-50)+'px'}">
-      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
-      </span>
-    
-    </div>
-
-    <div class="absolute sm:hidden block top-0 w-full h-full bg-center bg-cover bg-image-1">
-      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
-      </span>
-    </div>
-    
-    <div class="container relative mx-auto">
-      <div class="items-center flex flex-wrap">
-        <div class="w-full lg:w-full px-4 ml-auto mr-auto text-center">
-          <h1 class="text-white font-bold text-2xl sm:text-5xl uppercase" @click="updateVariable('title2')"> <span v-html="home.title2"></span> </h1>
-          <button v-scroll-to="'#contact'" class="flex-shrink-0 text-white border-0 py-2 px-8 bg-teal-500 focus:outline-none hover:bg-blue-700 rounded-lg text-lg mt-4 sm:mt-8" @click="updateVariable('title2Button')">{{home.title2Button}}</button>
-          
-          </div>
-      </div>
-    </div>
-    
-    
-    
-  </div>
 
   <div id="learnmore" class="w-full flex bg-gray-100 pt-16 flex-col justify-center items-center">
       <section class="text-gray-700 body-font">
@@ -168,6 +143,32 @@
       
     </div>
   
+  
+  <div ref="img2" class="relative pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">
+    <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image-1" :style="{'background-position-y': ((scrollDist-2)*-50)+'px'}">
+      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
+      </span>
+    
+    </div>
+
+    <div class="absolute sm:hidden block top-0 w-full h-full bg-center bg-cover bg-image-1">
+      <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
+      </span>
+    </div>
+    
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-full px-4 ml-auto mr-auto text-center">
+          <h1 class="text-white font-bold text-2xl sm:text-5xl uppercase" @click="updateVariable('title2')"> <span v-html="home.title2"></span> </h1>
+          <button v-scroll-to="'#contact'" class="flex-shrink-0 text-white border-0 py-2 px-8 bg-teal-500 focus:outline-none hover:bg-blue-700 rounded-lg text-lg mt-4 sm:mt-8" @click="updateVariable('title2Button')">{{home.title2Button}}</button>
+          
+          </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
 
   <!-- <section class="text-gray-700 mb-12 body-font">
       <div class="container px-5 py-24 mx-auto">
