@@ -58,9 +58,9 @@
                 <div class="container relative mx-auto h-full" id="contact">
                 <div class="items-center flex flex-col h-full justify-center">
                     <div class="w-1/2 rounded-md px-5 bg-white py-4  mx-auto">
-                    <div class="flex flex-col text-center w-full mb-12">
+                    <div class="flex flex-col text-center w-full mb-4">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Nullam vel dictum purus, nec accumsan velit. Nullam ac neque justo. Aenean tincidunt, justo et laoreet faucibus.</p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Looking to partner with EA or showcase your company?</p>
                     
                     
                     </div>

@@ -86,8 +86,8 @@
                 <div class="container relative mx-auto h-full" id="contact">
                 <div class="items-center flex flex-col h-full justify-center">
                     <div class="w-full h-full md:h-auto md:w-1/2 md:rounded-md px-5 bg-white py-4  mx-auto">
-                    <div class="flex flex-col text-center w-full mb-12">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+                    <div class="flex flex-col text-center w-full mb-6">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Contact Us</h1>
                     <p class="w-full lg:w-2/3 lg:mx-auto leading-relaxed text-base">{{startUps.contactHeading}}</p>
                     
                     
