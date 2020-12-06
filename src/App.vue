@@ -1,5 +1,6 @@
 <template>
   <div id="app" style="font-family: 'Noto Sans',sans-serif">
+    <!-- This is the sidebar for mobile -->
     <div :class="showNavMenu ? ['nav-menu-2'] : ['nav-menu']" class="fixed bg-gray-200 z-50 top-0 shadow-lg w-full flex flex-col ml-auto items-center h-screen" :style="{right: showNavMenu ? '0px' : '-100%'}">
       <div  class="flex w-full px-4 mt-4 justify-end items-center">
         <img src="./assets/group11black.png" class=" mr-auto h-12 w-auto" alt="">
@@ -23,6 +24,7 @@
         <p class='text-sm font-normal'>© Copyright 2020 MBA Anderson LLC</p>
       </div>
     </div>
+    <!-- This is the screen that appears when you click on editable text -->
     <div v-if="getUpdating.updatingDocument != ''" class="fixed h-screen flex items-center justify-center w-full" style="z-index:10000;">
       <div @click="cancelUpdating" class="absolute w-full h-screen bg-gray-500 opacity-75 z-0">
 
@@ -90,6 +92,7 @@
       </section>
 
     </div>
+    <!-- This is the navbar that appears at the top of the site and responds to scrolling -->
     <header style="z-index: 10000;" :class="($router.currentRoute.path=='/' && scrollDist<10) ? ['bw-white'] : scrollDist<10 ? '' : ['shadow-md', 'bg-white']" class="fixed top-0 z-10 transition duration-200 w-full text-gray-700 body-font" >
       <div class="w-full md:w-3/4 mx-auto flex flex-wrap py-5 flex-row items-center">
       <router-link to="/"> 
@@ -151,7 +154,7 @@
         </div>
       </div>
     </header>
-    
+    <!-- This is the section that loads whichever page the viewer is visiting -->
     <router-view/>
   </div>
 </template>

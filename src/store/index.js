@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import fb from './firebaseInit'
+import {db, storage} from './firebaseInit'
 
 Vue.use(Vuex)
 // let home = {
@@ -67,7 +67,8 @@ let home1;
 export default new Vuex.Store({
   state: {
 
-    db: fb,
+    db: db,
+    storage: storage,
     eventName: '',
     home: home1,
     updatingDocument: '',
@@ -246,79 +247,7 @@ export default new Vuex.Store({
       //   linkedin: '',
       // }
     ],
-    founders: 
-    [
-      // {
-      //     url: "https://i.imgur.com/QeYfrxi.png",
-      //     name: 'Sahara',
-      //     desc: 'Sahara is a SaaS platform that enables users to build physical products without downloading any software or purchasing any electronics, letting them prototype quickly and cheaply from anywhere. Our platform accomplishes this by allowing developers to connect to circuit boards, chips, and test equipment we host in the cloud.',
-      //     team: "Andy Chang, UCLA Anderson 2021 Josh Kimmel, UCLA Anderson 2021 Annie Lu, UCLA Anderson 2021 Jama Mohamed, UCLA Anderson 2021 Elaine Park, UCLA Law 2021",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/91/a8/3c/d0/4cbeafbed81f29bb61d0a391_262x130.jpg",
-      //     name: 'RealAppeal',
-      //     desc: 'For property owners who want to reduce their property taxes, realAppeal uses localized data and machine learning to file property tax appeals on your behalf, reducing your liability and in turn saving you money.',
-      //     team: "Colton Pace (EMBA '21), Frank DiZenzo (EMBA '21), Maura Liebendorfer (EMBA '21)",
-      //     looking: "Lawyer (real estate specialist)",
-      // },
-      // {
-      //     url: "https://i.imgur.com/UosxPAK.png",
-      //     name: 'Oya Apparel',
-      //     desc: 'OYA Apparel is the first company to design health-inspired, direct-to-consumer leggings for a woman’s fit and lifestyle needs. Our pro-woman brand will normalize conversations around women’s health while increasing a woman’s confidence about her needs.',
-      //     team: "Patrick Ayers, UCLA Anderson 2021 Mitchella Gilbert, UCLA Anderson 2021 Mac Seder, UCLA Anderson 2021 Ashley Sykora, UCLA Law 2021 Raylan Vaz, UCLA Anderson 2021",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/2e/78/0f/d1/b9ec9b394d9ce5584aadb3fb_214x214.jpg",
-      //     name: 'Socialite',
-      //     desc: 'Socialite is an on-demand staffing platform for events and experiential marketing agencies, that uses matchmaking technology to fill shifts in real-time with promotional models, bartenders, servers and photographers. ',
-      //     team: "Ania Puczylowska (EMBA '20), Matthew Cole (EMBA '20), Stephen A. Johnson (FEMBA '21), Naomi Chi (FEMBA '21)",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/bb/fc/c5/20/8d98948bb19bf1b41c59e8fe_238x130.jpg",
-      //     name: 'Gleam',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/6a/d8/c5/6f/5e3daabd2875280bcbbb45e5_238x76.jpg",
-      //     name: 'Outpace Cancer',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/74/01/64/5c/f29563d13e806f8eba4a5f31_166x166.jpg",
-      //     name: 'PDR Chemical',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/e1/09/47/bb/51b9bcaa7b3a221f1f654df9_226x120.jpg",
-      //     name: 'Protean',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/4f/47/33/1e/85e04bb81b840a3d319c109b_250x88.jpg",
-      //     name: 'Rest.',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-      // {
-      //     url: "http://d31hzlhk6di2h5.cloudfront.net/20200423/93/db/e9/d5/0d760de193c6b1630a4fc61e_238x132.jpg",
-      //     name: 'Wine Vision',
-      //     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu laoreet dui. Aliquam erat volutpat. Suspendisse rutrum ultrices neque, a dictum odio vehicula',
-      //     team: "",
-      //     looking: "",
-      // },
-    ],
+    founders: [],
     venturecapital: 
       [
           // {
@@ -418,6 +347,18 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    removeFounder(state,{ind}) {
+      state.founders.arr.splice(ind, 1)
+      state.db.collection("Pages").doc("founders").set({arr: state.founders.arr}, {merge:true})
+    },
+    addFounder(state,val) {
+      state.founders.arr.push(val)
+      state.db.collection("Pages").doc("founders").set({arr: state.founders.arr}, {merge:true})
+    },
+    editFounder(state, {founderData, ind}) {
+      state.founders.arr[ind] = founderData
+      state.db.collection("Pages").doc("founders").set({arr: state.founders.arr}, {merge:true})
+    },
     setUpdatingValue(state, val) {
       state.updatingValue = val
     },
@@ -438,15 +379,12 @@ export default new Vuex.Store({
     },
     pushToFirebase(state,{val, val2, val3}) {
       state.isSending = true
-      console.log("Document is being written!", state.isSending);
       if (state.updatingDocument == "Home"){
         var temp = {}
         temp[state.updatingVariable] = state.updatingValue
-        console.log(temp)
         state.db.collection("Pages").doc("home").set(temp,{merge:true})
         .then(function() {
             state.isSending = false
-            console.log("Document successfully written!", state.isSending);
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -456,14 +394,12 @@ export default new Vuex.Store({
         state.db.collection("Pages").doc(state.updatingDocument.toLowerCase()).set({arr: val, heading: val2, contactHeading: val3})
         .then(function() {
             state.isSending = false
-            console.log("Document successfully written!", state.isSending);
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
 
       }
-      console.log('resetting variables')
       state.updatingDocument = ''
       state.updatingVariable = ''
       state.updatingValue = ''
@@ -480,12 +416,10 @@ export default new Vuex.Store({
     pullFirebase(state){
       console.log(state)
         state.db.collection('Pages').onSnapshot(querySnapshot => {
-            console.log("Creeeebiiinnnnn")
             querySnapshot.docs.map(doc => {
               if (!doc.exists) {
                 console.log('No such document!');
               } else {
-                console.log(doc.id + ' Document data:', doc.data());
                 state[doc.id] = doc.data()
                 
               }
@@ -515,7 +449,6 @@ export default new Vuex.Store({
             if (!doc.exists) {
               console.log('No such document!');
             } else {
-              console.log('Document data:', doc.data());
               state[name] = doc.data()
               state[name].id = doc.id
             }
@@ -526,7 +459,25 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    addImage({commit}, {img, founderInfo}) {
+        let name = founderInfo.name + Math.random(100)
+      storage.child(name).put(img).then(() => {
+        storage.child(name).getDownloadURL().then((url) => {
+          founderInfo.url = url
+          commit("addFounder", founderInfo);
 
+        })
+      })
+    },
+    addImagePrevious({commit}, {img, founderInfo, founderEditorInd}) {
+      let name = founderInfo.name + Math.floor(Math.random() * 6) + 1  
+      storage.child(name).put(img).then(() => {
+        storage.child(name).getDownloadURL().then((url) => {
+          founderInfo.url = url
+          commit("editFounder", {founderInfo, ind: founderEditorInd});
+        })
+      })
+    }
   },
   modules: {
   }

@@ -3,15 +3,15 @@
     
 
     <div class="relative pb-16 flex content-center items-center justify-center" style="min-height: 75vh;">
-      <div class="absolute hidden sm:block top-0 w-full h-full bg-center bg-cover bg-image" :style="{'background-position-y': (scrollDist*-350 - 50)+'px'}">
+      <div class="absolute block top-0 w-full h-full bg-center bg-cover bg-image" :style="{'background-position-y': (scrollDist*-350 - 50)+'px'}">
         <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
       </div>
-      <div class="absolute sm:hidden block top-0 w-full h-full overflow-x-hidden bg-center bg-cover bg-image">
-        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-blue-500">
+      <!-- <div class="absolute sm:hidden block top-0 w-full h-full overflow-x-hidden bg-center bg-cover bg-image">
+        <span id="blackOverlay" class="left-0 w-full h-full absolute opacity-50 bg-black">
         </span>
         <img src="../assets/ucla_anderson.jpg" class="h-full w-auto " alt="">
-      </div>
+      </div> -->
       
       <div class="container relative mx-auto">
         <div class="items-center flex flex-wrap">
@@ -286,48 +286,59 @@
       </div>
     </section>
 
-    <section class="text-gray-700 body-font">
+    <section class="text-gray-700 body-font flex flex-col">
       <div class="container px-5 py-12 mx-auto">
-        <div class="flex flex-wrap -m-4 text-center">
-          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+        <div class="flex flex-wrap shadow-xl -m-4 text-center">
+          <div class="p-4 border-r md:w-1/4 sm:w-1/2 w-full">
+            <div class="px-4 py-2  flex items-center justify-center  rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 mr-10 w-12 h-12 inline-block" viewBox="0 0 24 24">
               <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-              <h2 class="title-font font-medium text-3xl text-gray-900" @click="updateVariable('val1Value')">{{home.val1Value}}</h2>
-              <p class="leading-relaxed" @click="updateVariable('val1Title')">{{home.val1Title}}</p>
+            <div class="flex flex-col items-start">
+<h2 class="title-font font-bold text-4xl text-blue-600" @click="updateVariable('val1Value')">{{home.val1Value}}</h2>
+              <p class="leading-relaxed  -mt-2 text-blue-700" @click="updateVariable('val1Title')">{{home.val1Title}}</p>
+            </div>
+              
             </div>
           </div>
-          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+          <div class="p-4 border-r md:w-1/4 sm:w-1/2 w-full">
+            <div class="px-4 py-2 flex items-center justify-center rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 mr-10 w-12 h-12 inline-block" viewBox="0 0 24 24">
                 <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
               </svg>
-              <h2 class="title-font font-medium text-3xl text-gray-900" @click="updateVariable('val2Value')">{{home.val2Value}}</h2>
-              <p class="leading-relaxed" @click="updateVariable('val2Title')">{{home.val2Title}}</p>
+              <div class="flex flex-col items-start">
+              <h2 class="title-font font-bold text-4xl text-blue-600" @click="updateVariable('val2Value')">{{home.val2Value}}</h2>
+              <p class="leading-relaxed -mt-2 text-blue-700" @click="updateVariable('val2Title')">{{home.val2Title}}</p>
+              </div>
             </div>
           </div>
-          <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <div class="p-4 border-r md:w-1/4 sm:w-1/2 w-full">
+            <div class="px-4 py-2  flex items-center justify-center  rounded-lg">
               
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 mr-10 w-12 h-12 inline-block" viewBox="0 0 24 24">
               <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"></path>
             </svg>
-              <h2 class="title-font font-medium text-3xl text-gray-900" @click="updateVariable('val3Value')">{{home.val3Value}}</h2>
-              <p class="leading-relaxed" @click="updateVariable('val3Title')">{{home.val3Title}}</p>
+            <div class="flex flex-col items-start">
+              <h2 class="title-font font-bold text-4xl text-blue-600" @click="updateVariable('val3Value')">{{home.val3Value}}</h2>
+              <p class="leading-relaxed  -mt-2 text-blue-700" @click="updateVariable('val3Title')">{{home.val3Title}}</p>
+
+            </div>
             </div>
           </div>
           <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <div class="px-4 py-2 flex items-center justify-center  rounded-lg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-teal-500 mr-10 w-12 h-12 inline-block" viewBox="0 0 24 24">
                 <path d="M3 18v-6a9 9 0 0118 0v6"></path>
                 <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
               </svg>
-              <h2 class="title-font font-medium text-3xl text-gray-900" @click="updateVariable('val4Value')">{{home.val4Value}}</h2>
-              <p class="leading-relaxed" @click="updateVariable('val4Title')">{{home.val4Title}}</p>
+              <div class="flex flex-col items-start">
+              <h2 class="title-font font-bold text-4xl text-blue-600" @click="updateVariable('val4Value')">{{home.val4Value}}</h2>
+              <p class="leading-relaxed  -mt-2 text-blue-700" @click="updateVariable('val4Title')">{{home.val4Title}}</p>
+
+              </div>
             </div>
           </div>
         </div>

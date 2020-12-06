@@ -15,5 +15,7 @@ if (!firebase.apps.length){
     firebase.initializeApp(firebaseConfig)
 }
 const db = firebase.firestore()
+const storage = firebase.storage().ref()
+const stor = firebase.storage()
 
-export default db;
+export {db, storage, stor};
