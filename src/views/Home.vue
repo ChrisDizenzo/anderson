@@ -524,43 +524,15 @@
           src="https://maps.google.com/maps?q=110%20Westwood%20Plaza%20Los%20Angeles%2C%20CA%2C%2090095&t=&z=15&ie=UTF8&iwloc=&output=embed"
         ></iframe>
       </div>
-      <div class="container px-5 py-24 mx-auto flex">
+      <div class="container px-5 py-32 mx-auto flex">
         <div
-          class="lg:w-1/3 md:w-1/2 bg-white hover:shadow-xl shadow-lg rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10"
+          class="lg:w-1/3 md:w-1/2 bg-white hover:shadow-xl shadow-lg rounded-lg flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10"
         >
-          <h2
-            class="text-gray-800 text-xl mb-1 font-bold title-font"
-            @click="updateVariable('contactTitle')"
-          >
-            {{ home.contactTitle }}
-          </h2>
-          <p
-            class="leading-relaxed mb-5 text-sm text-gray-600"
-            @click="updateVariable('contactDesc')"
-          >
-            {{ home.contactDesc }}
-          </p>
-          <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
-            placeholder="Name"
-            type="name"
-          />
-          <input
-            class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
-            placeholder="Email"
-            type="email"
-          />
-          <textarea
-            class="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none"
-            placeholder="Message"
-          ></textarea>
-          <button
-            class="text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded text-lg"
-          >
-            Send Message
-          </button>
+          <Contact :from="'Home'" :title="home.contactTitle" :description="home.contactDesc" />
+          
         </div>
       </div>
+      
     </section>
 
     <section class="text-gray-700 body-font flex flex-col">
@@ -789,8 +761,12 @@
 
 <script>
 import firebase from "firebase";
+import Contact from '../components/Contact'
 
 export default {
+  components: {
+    Contact
+  },
   name: "Home",
   data() {
     return {

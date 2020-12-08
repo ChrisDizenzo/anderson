@@ -91,15 +91,15 @@
               >
                 {{ company.name }}
               </h1>
-              <p v-if="company.desc != ''" class="mb-4 leading-relaxed">
+              <p class="mb-4 leading-relaxed">
                 <span class="font-bold text-gray-700">Description: </span>
                 {{ company.desc }}
               </p>
-              <p v-if="company.team != ''" class="mb-4">
+              <p class="mb-4">
                 <span class="font-bold text-gray-700">Team: </span>
                 {{ company.team }}
               </p>
-              <p v-if="company.looking != ''" class="mt-6 mb-2">
+              <p class="mt-6 mb-2">
                 <span class="font-bold p-1 rounded bg-blue-700 text-white"
                   >Looking for:</span
                 >
@@ -415,10 +415,10 @@ export default {
     submitEditFounder() {
       if (this.img !== undefined) {
         this.$store
-          .dispatch("addImagePrevious", {
+          .dispatch("replaceFounderAndImage", {
             img: this.img,
             founderInfo: this.founderEditorInfo,
-            ind: this.ind
+            ind: this.founderEditorInd
           })
           .then(() => {
             this.clearFounderEditor();
@@ -441,7 +441,7 @@ export default {
         return;
       }
       this.$store
-        .dispatch("addImage", {
+        .dispatch("addFounderAndImage", {
           img: this.img,
           founderInfo: this.founderEditorInfo,
         })

@@ -69,6 +69,7 @@ export default new Vuex.Store({
 
     db: db,
     storage: storage,
+    hasSentMessage: false,
     eventName: '',
     home: home1,
     updatingDocument: '',
@@ -248,6 +249,7 @@ export default new Vuex.Store({
       // }
     ],
     founders: [],
+    messages: [],
     venturecapital: 
       [
           // {
@@ -280,7 +282,7 @@ export default new Vuex.Store({
           // },
           
       ],
-    startup: 
+    startups: 
       [
         // {
         //     name: 'Hiyo', 
@@ -318,7 +320,7 @@ export default new Vuex.Store({
       return state.venturecapital
     },
     getStartUps(store){
-      return store.startup
+      return store.startups
     },
     getHome(state) {
       return state.home
@@ -345,6 +347,9 @@ export default new Vuex.Store({
     getUpdatingValue (state) {
       return state.updatingValue
     },
+    getMessages(state) {
+      return state.messages
+    }
   },
   mutations: {
     removeFounder(state,{ind}) {
@@ -358,6 +363,30 @@ export default new Vuex.Store({
     editFounder(state, {founderData, ind}) {
       state.founders.arr[ind] = founderData
       state.db.collection("Pages").doc("founders").set({arr: state.founders.arr}, {merge:true})
+    },
+    removeStartup(state,{ind}) {
+      state.startups.arr.splice(ind, 1)
+      state.db.collection("Pages").doc("startups").set({arr: state.startups.arr}, {merge:true})
+    },
+    addStartup(state,val) {
+      state.startups.arr.push(val)
+      state.db.collection("Pages").doc("startups").set({arr: state.startups.arr}, {merge:true})
+    },
+    editStartup(state, {startupData, ind}) {
+      state.startups.arr[ind] = startupData
+      state.db.collection("Pages").doc("startups").set({arr: state.startups.arr}, {merge: false})
+    },
+    addVC(state,val) {
+      state.venturecapital.arr.push(val)
+      state.db.collection("Pages").doc("venturecapital").set({arr: state.venturecapital.arr}, {merge:false})
+    },
+    addLeadership(state,val) {
+      state.leadership.arr.push(val)
+      state.db.collection("Pages").doc("leadership").set({arr: state.leadership.arr}, {merge:false})
+    },
+    changeLeadershipOrder(state,{ind1, ind2}) {
+      let hold = state.leadership.arr.splice(ind1,1)[0];
+      state.leadership.arr.splice(ind2,0,hold);
     },
     setUpdatingValue(state, val) {
       state.updatingValue = val
@@ -414,17 +443,15 @@ export default new Vuex.Store({
       state.home[elem] = val
     },
     pullFirebase(state){
-      console.log(state)
-        state.db.collection('Pages').onSnapshot(querySnapshot => {
-            querySnapshot.docs.map(doc => {
-              if (!doc.exists) {
-                console.log('No such document!');
-              } else {
-                state[doc.id] = doc.data()
-                
-              }
-            })
+      state.db.collection('Pages').onSnapshot(querySnapshot => {
+          querySnapshot.docs.map(doc => {
+            if (!doc.exists) {
+              console.log('No such document!');
+            } else {
+              state[doc.id] = doc.data()
+            }
           })
+        })
     },
     changeHome(state,homeVal){
       state.db.collection("Pages").doc("home").set(homeVal,{merge:true})
@@ -459,8 +486,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    addImage({commit}, {img, founderInfo}) {
-        let name = founderInfo.name + Math.random(100)
+    addFounderAndImage({commit}, {img, founderInfo}) {
+        let name = founderInfo.name +'_founder_'+ Math.floor(Math.random() * 30)
       storage.child(name).put(img).then(() => {
         storage.child(name).getDownloadURL().then((url) => {
           founderInfo.url = url
@@ -469,15 +496,63 @@ export default new Vuex.Store({
         })
       })
     },
-    addImagePrevious({commit}, {img, founderInfo, founderEditorInd}) {
-      let name = founderInfo.name + Math.floor(Math.random() * 6) + 1  
+    replaceFounderAndImage({commit}, {img, founderInfo, founderEditorInd}) {
+      let name = founderInfo.name+'_founder_'+ Math.floor(Math.random() * 30)  
       storage.child(name).put(img).then(() => {
         storage.child(name).getDownloadURL().then((url) => {
           founderInfo.url = url
-          commit("editFounder", {founderInfo, ind: founderEditorInd});
+          commit("editFounder", {founderData: founderInfo, ind: founderEditorInd});
         })
       })
-    }
+    },
+  addStartup({commit}, {img, startupInfo}) {
+    let name = img.name.split(".")[0]+'_startup_'+ Math.floor(Math.random() * 30)
+    storage.child(name).put(img).then(() => {
+    storage.child(name).getDownloadURL().then((url) => {
+      startupInfo.url = url
+      commit("addStartup", startupInfo);
+      })
+    })
+  },
+  addVC({commit}, {img, vcInfo}) {
+    let name = img.name.split(".")[0]+'_vc_'+ Math.floor(Math.random() * 30)
+    storage.child(name).put(img).then(() => {
+    storage.child(name).getDownloadURL().then((url) => {
+      vcInfo.url = url
+      commit("addVC", vcInfo);
+      })
+    })
+  },
+  removeVC({state},{ind}) {
+    state.venturecapital.arr.splice(ind, 1)
+    state.db.collection("Pages").doc("venturecapital").set({arr: state.venturecapital.arr}, {merge:false})
+  },
+  addLeadership({commit}, {img, leadershipInfo}) {
+    let name = img.name.split(".")[0]+'_leadership_'+ Math.floor(Math.random() * 30)
+    storage.child(name).put(img).then(() => {
+    storage.child(name).getDownloadURL().then((url) => {
+      leadershipInfo.img = url
+      commit("addLeadership", leadershipInfo);
+      })
+    })
+  },
+  removeLeadership({state},{ind}) {
+    state.leadership.arr.splice(ind, 1)
+    state.db.collection("Pages").doc("leadership").set({arr: state.leadership.arr}, {merge:false})
+  },
+  submitLeadershipOrder({state}) {
+    state.db.collection("Pages").doc("leadership").set({arr: state.leadership.arr}, {merge:false})
+  },
+  flipMessageSending({state}) {
+    state.db.collection("Pages").doc("messages").set({isOn: !state.messages.isOn}, {merge:true})
+  },
+  addMessage({state}, out) {
+    console.log('here i am')
+    if(state.hasSentMessage && state.messages.isOn) return
+    state.hasSentMessage = true
+    state.messages.arr.push(out)
+    state.db.collection("Pages").doc("messages").set({arr: state.messages.arr}, {merge: true})
+  },
   },
   modules: {
   }

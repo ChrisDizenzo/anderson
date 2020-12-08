@@ -123,28 +123,18 @@
         </div>
         <div class="md:ml-auto hidden md:flex mt-2 items-end h-full justify-center">
           <div v-for="(navItem, ind) in navItems" :key="ind" :to="navItem.route">
-            <div v-if="Array.isArray(navItem.dropdown)">
-              <div @mouseleave="dropdown = false" @mouseenter="dropdown = true" class="relative ">
-                <a :class="dropdown ? 'text-white' : ['text-gray-300', 'hover:text-white']" class="mr-8 transition duration-200 font-medium uppercase cursor-pointer">{{navItem.name}}</a>
-                
-                <div v-show="dropdown" :class="dropdown ? ['pointer-events-auto'] : ['opacity-0', 'pointer-events-none', '-mt-2']" class="top-0 py-1 shadow-lg mt-6 absolute w-32 bg-white animatetest flex flex-col border border-gray-200 rounded">
-                  <router-link :to="navInner.route" v-for="(navInner, ind2) in navItem.dropdown" :key="ind2">
-                  <div class="py-4 px-4 text-black hover:text-blue-500 cursor-pointer">
-                    <p class="text-sm" style="cursor: pointer !important">{{navInner.name}}</p>
-                  </div>
-                  </router-link>
-
-                </div>
-
-              </div>
-              
-            </div>
-            
-            <router-link @mouseenter="dropdown = false" v-else :to="navItem.route">
+           
+            <router-link @mouseenter="dropdown = false" :to="navItem.route">
               <a :class="$router.currentRoute.path==navItem.route ? 'text-blue-500' : ($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 lg:mr-10 transition duration-200 font-medium cursor-pointer" >{{navItem.name}}</a>
 
             </router-link>
             
+          </div>
+         <div v-if="isAdmin">
+            <router-link @mouseenter="dropdown = false" :to="'/messages'">
+              <a :class="$router.currentRoute.path=='/messages' ? 'text-blue-500' : ($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 lg:mr-10 transition duration-200 font-medium cursor-pointer" >Messages</a>
+
+            </router-link>
           </div>
           <a href="https://uclaanderson.campusgroups.com/entrepreneur/club_signup" target="_blank" :class="($router.currentRoute.path=='/' && scrollDist<10) ? [['text-gray-200', 'hover:text-white']] : ['text-black']" class="mr-4 transition duration-200 lg:mr-10 font-medium cursor-pointer" >Apply to EA</a>
           
@@ -174,45 +164,6 @@ export default {
       this.$store.commit('cancelUpdating')
       this.changeArray = []
     },
-    newValue() {
-      if(this.updatingVariable.updatingDocument == 'Leadership') {
-        this.changeArray.push(
-      {
-        name: "",
-        title: "",
-        img: "",
-        email: "",
-        quote: "",
-        linkedin: "",
-      }
-      )
-      } else if(this.updatingVariable.updatingDocument == 'startup') {
-        this.changeArray.push(
-      {
-        name: "",
-        url: "",
-      }
-      )
-      } else if(this.updatingVariable.updatingDocument == 'Founders') {
-        this.changeArray.push(
-      {
-        url: "",
-        name: '',
-        desc: '',
-        team: "",
-        looking: "",
-      }
-      )
-      } else if(this.updatingVariable.updatingDocument == 'VentureCapital') {
-        this.changeArray.push(
-      {
-        name: "",
-        url: "",
-      }
-      )
-      }
-      
-    },
     updateValue(val) {
       this.$store.commit('setUpdatingValue', val)
     }, 
@@ -228,25 +179,6 @@ export default {
     },
   },
   watch: {
-    updatingVariable () {
-      if(this.updatingVariable.updatingDocument == 'Leadership') {
-        this.changeArray = this.leadership.arr.slice(0)
-        this.heading = this.leadership.heading
-        this.contactHeading = this.leadership.contactHeading
-      } else if(this.updatingVariable.updatingDocument == 'startup') {
-        this.changeArray = this.startUps.arr.slice(0)
-        this.heading = this.startUps.heading
-        this.contactHeading = this.startUps.contactHeading
-      } else if(this.updatingVariable.updatingDocument == 'Founders') {
-        this.changeArray = this.founders.arr.slice(0)
-        this.heading = this.founders.heading
-        this.contactHeading = this.founders.contactHeading
-      } else if(this.updatingVariable.updatingDocument == 'VentureCapital') {
-        this.changeArray = this.ventureCapital.arr.slice(0)
-        this.heading = this.ventureCapital.heading
-        this.contactHeading = this.ventureCapital.contactHeading
-      }
-    },
     $route (){
         this.showNavMenu = false
         window.scrollTo(0,0)
@@ -280,6 +212,9 @@ export default {
     founders(){
       return this.$store.getters.getFounders
     },
+    isAdmin() {
+      return this.$store.getters.getIsAdmin
+    },
   },
   mounted () {
     this.$store.commit('pullFirebase')
@@ -296,23 +231,6 @@ export default {
       modal: false,
       showNavMenu: false,
       navItems: [
-        // {
-        //   name: 'About',
-        //   dropdown: [
-        //     {
-        //       name: 'Mission',
-        //       route: '/mission'
-        //     },
-        //     {
-        //       name: 'Startups',
-        //       route: '/startups'
-        //     },
-        //     {
-        //       name: 'Team',
-        //       route: '/team'
-        //     },
-        // ]
-        // },
         {
           name: 'Startups',
           route: '/startups'
