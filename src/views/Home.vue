@@ -846,7 +846,7 @@ export default {
             // var token = result.credential.accessToken;
             // The signed-in user info.
             // var user = result.user
-            if (result.user.email == "andrewdizenzojhu@gmail.com") {
+            if (result.user.email == "achang326@gmail.com" || result.user.email == "andrewdizenzojhu@gmail.com" ) {
               this.$store.commit("flipAdmin");
             }
 
@@ -864,6 +864,8 @@ export default {
             // var credential = error.credential;
             // ...
           });
+      } else {
+        this.$store.commit("flipAdmin");
       }
     },
   },

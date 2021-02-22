@@ -16,7 +16,7 @@
     "date-fns": "^2.14.0",
     "datejs": "^1.0.0-rc3",
     "firebase": "^7.15.1",
-    "firebase-tools": "^8.4.0",
+    "firebase-tools": "^9.4.0",
     "moment": "^2.26.0",
     "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.4.6",

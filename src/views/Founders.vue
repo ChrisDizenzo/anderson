@@ -23,6 +23,16 @@
           <p class="lg:w-3/5 mt-6 mx-auto leading-relaxed text-base">
             {{ foundersData.heading }}
           </p>
+          <p
+            class="lg:w-2/3 mx-auto leading-relaxed text-gray-800 mt-4 text-sm"
+          >
+            {{ foundersData.contactHeading }}
+            <span
+              class="text-blue-500 ml-1s cursor-pointer hover:underline"
+              v-scroll-to="'#founder-container'"
+              >Click here</span
+            >
+          </p>
           <div class="w-32 mx-auto mt-6 h-1 bg-yellow-500"></div>
 
           <div class="ml-auto" v-if="isAdmin">
@@ -75,6 +85,7 @@
         >
           <div
             class="container mx-auto flex px-5 py-16 border-b border-t border-gray-200 md:flex-row flex-col items-center relative"
+            id="founder-container"
           >
             <div class="md:w-1/4 w-5/6 mb-10 md:mb-0">
               <img

@@ -1,4 +1,4 @@
-# schedulerboi
+# Anderson Web App
 
 ## Project setup
 ```

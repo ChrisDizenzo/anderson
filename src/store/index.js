@@ -75,7 +75,7 @@ export default new Vuex.Store({
     updatingDocument: '',
     updatingVariable: '',
     updatingValue: '',
-    isAdmin: true,
+    isAdmin: false,
     isSending: false,
     leadership: 
     [
